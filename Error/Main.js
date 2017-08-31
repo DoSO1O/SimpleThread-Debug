@@ -1,3 +1,3 @@
 setTimeout(() => {
-	window.open("http://sthread.y-zu.org/", "_parent");
+	window.open("https://sthread.y-zu.org/", "_parent");
 }, 5000);

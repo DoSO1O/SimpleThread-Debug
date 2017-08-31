@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 	if (!base.user) {
-		location.href = "http://sthread.y-zu.org/Error/401/";
+		location.href = "https://sthread.y-zu.org/Error/401/";
 	}
 
 	base.Database.get(base.Database.INTERVAL, "users/" + base.user.uid, (res) => {

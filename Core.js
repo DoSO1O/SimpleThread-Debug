@@ -2,10 +2,10 @@ window.base = parent.base || {};
 
 window.addEventListener("DOMContentLoaded", () => {
 	if (!base.Database) {
-		location.href = "http://sthread.y-zu.org/Error/403.10/";
+		location.href = "https://sthread.y-zu.org/Error/403.10/";
 	}
 
-	location.pathname == "http://sthread.y-zu.org/" || sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPage", location.pathname + location.search);
+	location.pathname == "https://sthread.y-zu.org/" || sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPage", location.pathname + location.search);
 
 	DOM('@A[Href]:Not([Target]):Not([Href^="javascript:"])').forEach((elem) => {
 		elem.addEventListener("click", (event) => {
