@@ -1,2 +1,2 @@
-# SimpleThread-Debug
+# SimpleThread for Debugging
 "Be Simple, Be Free"
