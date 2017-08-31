@@ -1,3 +1,3 @@
 setTimeout(() => {
-	window.open("https://sthread.y-zu.org/", "_parent");
+	window.open("/SimpleThread-Debug/", "_parent");
 }, 5000);

@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	let querys = location.querySort();
 
 	if (!querys.TID) {
-		location.href = "https://sthread.y-zu.org/Error/406/";
+		location.href = "/SimpleThread-Debug/Error/406/";
 	}
 	
 	let doc = parent.document;
