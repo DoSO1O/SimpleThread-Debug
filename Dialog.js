@@ -127,8 +127,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			DOM("#Screens_Loading").removeAttribute("Disabled");
-
 			base.Database.transaction("threads/" + DOM("#Dialogs_Thread_Poster_Content_TID").value + "/data", (res) => {
 				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_Content_TID").value + "/data/" + res.length, {
 					uid: base.user.uid,
@@ -141,7 +139,6 @@ window.addEventListener("DOMContentLoaded", () => {
 				DOM("#Dialogs_Thread_Poster_Content_Value").classList.remove("is-dirty"),
 				DOM("#Dialogs_Thread_Poster_Content_Value_Input").value = "";
 				
-				DOM("#Screens_Loading").setAttribute("Disabled", "");
 				DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 				
 				DOM("#Dialogs_Thread_Poster").close();

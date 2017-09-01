@@ -3,6 +3,16 @@ window.addEventListener("DOMContentLoaded", () => {
 		location.href = "/SimpleThread-Debug/Error/401/";
 	}
 
+	DOM("#Profile_Photo").dataset.uid = base.user.uid;
+
+	base.Database.get(base.Database.ONCE, "users", (res) => {
+		for (let uid in res) {
+			let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
+			
+			document.head.appendChild(photoStyle);
+		}
+	});
+
 	base.Database.get(base.Database.INTERVAL, "users/" + base.user.uid, (res) => {
 		res.links = res.links || [];
 
@@ -12,12 +22,14 @@ window.addEventListener("DOMContentLoaded", () => {
 		DOM("#Profile_Info_Detail_Input").value = res.detail;
 
 		(() => {
-			if (res.links.length - DOM("#Profile_Info_URL").dataset.listlength > 0) {
-				for (let i = 0; i <= res.links.length - parseInt(DOM("#Profile_Info_URL").dataset.listlength); i++) {
+			let clientListLength = DOM("#Profile_Info_URL").dataset.listlength;
+
+			if (res.links.length - clientListLength > 0) {
+				for (let i = 0; i < res.links.length - clientListLength; i++) {
 					DOM("#Profile_Info_URL_Add").click();
 				}
 			} else {
-				for (let i = 0; i < parseInt(DOM("#Profile_Info_URL").dataset.listlength) - res.links.length; i++) {
+				for (let i = 0; i < clientListLength - res.links.length; i++) {
 					DOM("#Profile_Info_URL").children[0].querySelector('Button[ID*="Remove"]').click();
 				}
 			}
@@ -44,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			links: (() => {
 				let links = [];
 
-				for (let i = 0; i < parseInt(DOM("#Profile_Info_URL").dataset.listlength); i++) {
+				for (let i = 0; i < DOM("#Profile_Info_URL").dataset.listlength; i++) {
 					let currentList = DOM("#Profile_Info_URL").querySelector('Li[Data-ItemID="' + i + '"]');
 
 					links.push({

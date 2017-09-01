@@ -1,4 +1,5 @@
 window.base = null;
+window.wThread = new Worker("Worker.js");
 
 window.addEventListener("DOMContentLoaded", () => {
 	base = new FirebasePlus({
@@ -23,6 +24,10 @@ window.addEventListener("DOMContentLoaded", () => {
 					document.querySelector("#Dialogs_Account_CreateNotify").showModal();
 				}
 
+				DOM('@A[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
+					btn.dataset.uid = base.user.uid;
+				});
+
 				base.Database.update("users/" + user.uid, {
 					gplusName: user.providerData[0].displayName,
 					gplusPhoto: user.photoURL
@@ -37,28 +42,11 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 
 		base.Database.get(base.Database.ONCE, "users", (res) => {
-			let photoStyles = [];
-	
 			for (let uid in res) {
-				res[uid].gplusPhoto || (res[uid].gplusPhoto = "");
-	
-				let photoStyle = (() => {
-					let style = new Style((() => {
-						let prop = {};
-							prop[`#Dialogs_Profile_InfoViewer_Content_Photo[Data-UID="${uid}"]`] = {
-								"Background-Image": `URL(${res[uid].gplusPhoto})`
-							};
-	
-						return prop;
-					})());
-	
-					return style.textContent;
-				})();
-	
-				photoStyles.push(photoStyle);
+				let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
+				
+				document.head.appendChild(photoStyle);
 			}
-	
-			DOM('$Style[UUID="Dialogs_Profile_InfoViewer_Content_Photo--Manager"]').textContent = photoStyles.join("\r\n");
 		});
 
 
@@ -67,8 +55,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		if (querys.TID) {
 			DOM("$IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + querys.TID;
-		} else {
-			!sessionStorage.getItem("com.GenbuProject.SimpleThread.currentPage") || (DOM("$IFrame.mdl-layout__content").src = sessionStorage.getItem("com.GenbuProject.SimpleThread.currentPage"));
 		}
 	});
 
@@ -79,7 +65,6 @@ window.addEventListener("DOMContentLoaded", () => {
 		!DOM("$Div.mdl-layout__obfuscator") || DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
 
 		if (DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") DOM("#Header_Title").textContent = "Simple Thread";
-		DOM("#Screens_Loading").setAttribute("Disabled", "");
 	});
 
 	DOM("#Header_SignInOut").addEventListener("click", () => {
@@ -97,4 +82,19 @@ window.addEventListener("DOMContentLoaded", () => {
 				break;
 		}
 	});
+});
+
+Notification.requestPermission(function (state) {
+	/*switch (state) {
+		case "default":
+			break;
+			
+		case "granted":
+			console.info("通知の許可が確認されました");
+			break;
+			
+		case "denied":
+			console.warn("通知の許可が確認されません");
+			break;
+	}*/
 });

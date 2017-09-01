@@ -52,7 +52,7 @@
 					<Nav Class = "mdl-navigation">
 						<A Class = "mdl-navigation__link" Href = "Top/">Top</A>
 						<A ID = "Header_SignInOut" Class = "mdl-navigation__link">Sign In</A>
-						<A ID = "Header_AccountPane-Btn" Data-TagID = "ProfilePhoto--Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" Href = "Profile/"></A>
+						<A ID = "Header_AccountPane-Btn" UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
 
 						<Div Class = "mdl-tooltip" For = "Header_AccountPane-Btn">See your profile</Div>
 					</Nav>
@@ -62,7 +62,7 @@
 			<Div ID = "Drawer" Class = "mdl-layout__drawer">
 				<Span Class = "mdl-layout-title">
 					Simple Thread
-					<A Data-TagID = "ProfilePhoto--Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" Href = "Profile/"></A>
+					<A UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
 				</Span>
 
 				<Nav Class = "mdl-navigation">
@@ -72,14 +72,6 @@
 			</Div>
 
 			<IFrame ID = "Page" Class = "mdl-layout__content" Src = "Top/"></IFrame>
-		</Div>
-
-
-
-		<Div ID = "Screens">
-			<Div ID = "Screens_Loading" Disabled>
-				<Div ID = "Screens_Loading_Spinner" Class = "mdl-spinner mdl-js-spinner is-active"></Div>
-			</Div>
 		</Div>
 
 
@@ -142,7 +134,7 @@
 
 				<Dialog ID = "Dialogs_Profile_InfoViewer" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Profile_InfoViewer_Content" Class = "mdl-dialog__content">
-						<Div ID = "Dialogs_Profile_InfoViewer_Content_Photo" Data-UID = ""></Div>
+						<Div ID = "Dialogs_Profile_InfoViewer_Content_Photo" Class = "ProfilePhoto" Data-UID = ""></Div>
 
 						<Div ID = "Dialogs_Profile_InfoViewer_Content_Info">
 							<Span ID = "Dialogs_Profile_InfoViewer_Content_Info_Name" Class = "mdl-layout__title"></Span>

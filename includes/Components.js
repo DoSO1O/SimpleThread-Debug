@@ -17,6 +17,12 @@ class Components {
 
 	static get componentIds () {
 		return {
+			Styles: {
+				ProfilePhotoManager: {
+					ROOT: '[UUID="Styles_ProfilePhoto--Manager"]'
+				}
+			},
+
 			Dialogs: {
 				Profile: {
 					InfoViewer: {
@@ -47,6 +53,34 @@ class Components {
 
 
 
+	static get Styles () {
+		return {
+			ProfilePhotoManager: (() => {
+				function ProfilePhotoManager (uid, photoUrl) {
+					try {
+						if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
+						
+						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Styles.ProfilePhotoManager.ROOT}`), true);
+						
+						let componentWrapper = DOM("ComponentWrapper");
+							componentWrapper.appendChild(component);
+
+							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
+								[/\${uid}/g, uid || ""],
+								[/\${photoUrl}/g, photoUrl || "/favicon.ico"]
+							]);
+							
+						return componentWrapper.firstElementChild;
+					} catch (error) {}
+				}; ProfilePhotoManager.prototype = Object.create(null, {
+					constructor: { value: ProfilePhotoManager }
+				});
+		
+				return ProfilePhotoManager;
+			})()
+		}
+	}
+	
 	static get Dialogs () {
 		return {
 			Profile: {
@@ -54,20 +88,22 @@ class Components {
 					Links: {
 						Link: (() => {
 							function Link (urlTitle, url) {
-								if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
-								
-								let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Dialogs.Profile.InfoViewer.LINKS.LINK}`), true);
-								
-								let componentWrapper = DOM("ComponentWrapper");
-									componentWrapper.appendChild(component);
-
-									componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
-										[/\${urlTitle}/g, urlTitle || url || "Untitled"],
-										[/\${url}/g, url || ""],
-										[/\${urlOrigin}/g, new URL(url).origin || locaion.origin]
-									]);
+								try {
+									if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
 									
-								return componentWrapper.firstElementChild;
+									let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Dialogs.Profile.InfoViewer.LINKS.LINK}`), true);
+									
+									let componentWrapper = DOM("ComponentWrapper");
+										componentWrapper.appendChild(component);
+
+										componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
+											[/\${urlTitle}/g, urlTitle || url || "Untitled"],
+											[/\${url}/g, url || ""],
+											[/\${urlOrigin}/g, new URL(url).origin || locaion.origin]
+										]);
+										
+									return componentWrapper.firstElementChild;
+								} catch (error) {}
 							}; Link.prototype = Object.create(null, {
 								constructor: { value: Link }
 							});
@@ -84,19 +120,21 @@ class Components {
 		return {
 			Thread: (() => {
 				function Thread (tid, title) {
-					if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
+					try {
+						if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
 
-					let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Threadlist.THREAD}`), true);
+						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Threadlist.THREAD}`), true);
 
-					let componentWrapper = DOM("ComponentWrapper");
-						componentWrapper.appendChild(component);
+						let componentWrapper = DOM("ComponentWrapper");
+							componentWrapper.appendChild(component);
 
-						componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
-							[/\${tid}/g, tid || ""],
-							[/\${title}/g, title || ""]
-						]);
+							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
+								[/\${tid}/g, tid || ""],
+								[/\${title}/g, title || ""]
+							]);
 
-					return componentWrapper.firstElementChild;
+						return componentWrapper.firstElementChild;
+					} catch (error) {}
 				}; Thread.prototype = Object.create(null, {
 					constructor: { value: Thread }
 				});
@@ -109,24 +147,25 @@ class Components {
 	static get Thread () {
 		return {
 			Post: (() => {
-				function Post (pid, uid, userName, content, createdAt, rnd) {
-					if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
+				function Post (pid, uid, userName, content, createdAt) {
+					try {
+						if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
 
-					let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Thread.POST}`), true);
+						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Thread.POST}`), true);
 
-					let componentWrapper = DOM("ComponentWrapper");
-						componentWrapper.appendChild(component);
+						let componentWrapper = DOM("ComponentWrapper");
+							componentWrapper.appendChild(component);
 
-						componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
-							[/\${pid}/g, pid + "" || ""],
-							[/\${uid}/g, uid || ""],
-							[/\${userName}/g, userName || ""],
-							[/\${content}/g, content || ""],
-							[/\${createdAt}/g, createdAt || ""],
-							[/\${rnd}/g, rnd || ""]
-						]);
+							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
+								[/\${pid}/g, pid + "" || ""],
+								[/\${uid}/g, uid || ""],
+								[/\${userName}/g, userName || ""],
+								[/\${content}/g, content || ""],
+								[/\${createdAt}/g, createdAt || ""]
+							]);
 
-					return componentWrapper.firstElementChild;
+						return componentWrapper.firstElementChild;
+					} catch (error) {}
 				}; Post.prototype = Object.create(null, {
 					constructor: { value: Post }
 				});

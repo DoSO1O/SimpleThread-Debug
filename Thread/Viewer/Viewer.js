@@ -13,32 +13,15 @@ window.addEventListener("DOMContentLoaded", () => {
 		doc.querySelector("#Dialogs_Thread_Poster_Content_TID").value = querys.TID;
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {
-		let photoStyles = [];
-
 		for (let uid in res) {
-			res[uid].gplusPhoto || (res[uid].gplusPhoto = "");
-
-			let photoStyle = (() => {
-				let style = new Style((() => {
-					let prop = {};
-						prop[`A[UUID="Thread_Post_Header_ActorPhoto"][Data-UID="${uid}"]`] = {
-							"Background-Image": `URL(${res[uid].gplusPhoto})`
-						};
-
-					return prop;
-				})());
-
-				return style.textContent;
-			})();
-
-			photoStyles.push(photoStyle);
+			let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
+			
+			document.head.appendChild(photoStyle);
 		}
-
-		DOM('$Style[UUID="Thread_Post_Header_ActorPhoto--Manager"]').textContent = photoStyles.join("\r\n");
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID, (res) => {
-		doc.querySelector("#Header_Title").textContent = `Simple Thread == ${res.title}`;
+		doc.querySelector("#Header_Title").textContent = `Simple Thread 【${res.title}】`;
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID + "/data", (res) => {
@@ -57,17 +40,24 @@ window.addEventListener("DOMContentLoaded", () => {
 		
 		if (DOM("#Thread").children.length < resForIncrease.length) {
 			for (let i = DOM("#Thread").children.length; i < resForIncrease.length; i++) {
-				let rnd = new DOM.Randomizer(DOM.Randomizer.TYPE.LEVEL3).generate(16);
-
-				let post = new Components.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString(), rnd);
+				let post = new Components.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString());
 					post.querySelector('A[UUID="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
 						doc.querySelector("#Dialogs_Profile_InfoViewer_Content_UID").value = resForIncrease[i].uid;
 						doc.querySelector("#Dialogs_Profile_InfoViewer").showModal();
 					});
 					
 				base.Database.get(base.Database.ONCE, "users/" + resForIncrease[i].uid, (userRes) => {
-					componentHandler.upgradeElement(post.querySelector(`Label#Thread_Post_Actions_Plus_${rnd}`));
 					post.querySelector('Span[UUID="Thread_Post_Header_Actor"]').textContent = userRes.userName;
+
+					window.wThread.postMessage({
+						TYPE: "NOTIFICATION",
+
+						value: {
+							title: userRes.userName,
+							content: post.querySelector('Div[UUID="Thread_Post_Content"]').textContent,
+							icon: userRes.gplusPhoto
+						}
+					});
 				});
 
 				URL.filter(post.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {
