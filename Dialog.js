@@ -109,7 +109,6 @@ window.addEventListener("DOMContentLoaded", () => {
 						{
 							uid: base.user.uid,
 							content: DOM("#Dialogs_Thread_InfoInputer_Content_Name_Input").value,
-							plusCount: 0,
 							createdAt: now
 						}
 					],
@@ -131,7 +130,6 @@ window.addEventListener("DOMContentLoaded", () => {
 				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_Content_TID").value + "/data/" + res.length, {
 					uid: base.user.uid,
 					content: DOM("#Dialogs_Thread_Poster_Content_Value_Input").value,
-					plusCount: 0,
 					createdAt: new Date().getTime()
 				});
 
