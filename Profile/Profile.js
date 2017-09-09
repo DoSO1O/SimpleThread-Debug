@@ -1,8 +1,16 @@
-window.addEventListener("DOMContentLoaded", () => {
-	if (!base.user) {
-		location.href = "/SimpleThread-Debug/Error/401/";
-	}
+terminal.addEventListener("message", (event) => {
+	let message = event.data || {};
+		message.code = message.code || "",
+		message.data = !(message.data != false && !message.data) ? message.data : "";
 
+	switch (message.code) {
+		case "Code-SendHasLogined":
+			if (!message.data) location.href = "/SimpleThread-Debug/Error/401/";
+			break;
+	}
+});
+
+window.addEventListener("DOMContentLoaded", () => {
 	DOM("#Profile_Photo").dataset.uid = base.user.uid;
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {

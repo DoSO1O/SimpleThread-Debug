@@ -63,7 +63,18 @@ Span[UUID="Thread_Post_Actions_Plus_Count"] {
 	Right: 0;
 	Bottom: 0;
 
+	Display: Flex;
+	Flex-Direction: Column;
+
 	Padding: 5vh 4vw;
+}
+
+#FlowPanel_Btns > * {
+	Margin-Bottom: 5vh;
+}
+
+#FlowPanel_Btns > *:Last-Child {
+	Margin-Bottom: 0;
 }
 
 #FlowPanel_Btns > *[Disabled] {

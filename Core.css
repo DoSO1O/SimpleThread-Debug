@@ -12,24 +12,24 @@ A:Not([Href]) {
 
 
 
-*[Data-TagID="ProfilePhoto"] {
+*[UUID="ProfilePhoto"] {
 	Width: Auto;
 
 	Background: Transparent Center / Cover;
 	Border-Radius: 100%;
 }
 
-*[Data-TagID="ProfilePhoto"]::Before {
+*[UUID="ProfilePhoto"]::Before {
 	Content: "";
 
 	Display: Block;
 	Padding-Top: 100%;
 }
 
-*[Data-TagID="ProfilePhoto--Btn"] {
+*[UUID="ProfilePhoto-Btn"] {
 	Background: Transparent Center / Cover;
 }
 
-*[Data-TagID="ProfilePhoto--Btn"][Disabled] {
+*[UUID="ProfilePhoto-Btn"][Disabled] {
 	Display: None;
 }
