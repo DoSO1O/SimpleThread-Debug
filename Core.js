@@ -9,6 +9,7 @@ window.terminal = parent.terminal || {};
 
 try {
 	terminal.postMessage({ code: "Code-Connected" });
+	terminal.postMessage({ code: "Code-RequestHasLogined" });
 } catch (error) {
 	location.href = "/SimpleThread-Debug/Error/403.10/";
 }

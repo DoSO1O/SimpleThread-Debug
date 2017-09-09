@@ -7,7 +7,6 @@ self.addEventListener("message", (event) => {
 
 	switch (message.code) {
 		case "Code-Connected":
-			self.postMessage({ code: "Code-SendHasLogined_1" });
 			break;
 
 		case "Code-RequestHasLogined":
@@ -26,5 +25,5 @@ self.addEventListener("message", (event) => {
 			break;
 	}
 
-	console.info(message);
+	//console.info(message);
 });

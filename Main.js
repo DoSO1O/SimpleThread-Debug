@@ -73,7 +73,7 @@ window.terminal = (() => {
 					break;
 			}
 
-			console.info(message);
+			//console.info(message);
 		});
 
 		terminal.postMessage({ code: "Code-Initialize" });
