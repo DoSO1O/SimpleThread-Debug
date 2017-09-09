@@ -49,15 +49,12 @@ window.addEventListener("DOMContentLoaded", () => {
 				base.Database.get(base.Database.ONCE, "users/" + resForIncrease[i].uid, (userRes) => {
 					post.querySelector('Span[UUID="Thread_Post_Header_Actor"]').textContent = userRes.userName;
 
-					window.wThread.postMessage({
-						TYPE: "NOTIFICATION",
-
-						value: {
-							title: userRes.userName,
-							content: post.querySelector('Div[UUID="Thread_Post_Content"]').textContent,
-							icon: userRes.gplusPhoto
-						}
-					});
+					/*let notify = new Notification(userRes.userName, {
+						body: post.querySelector('Div[UUID="Thread_Post_Content"]').textContent,
+						icon: userRes.gplusPhoto
+					}); notify.addEventListener("click", (res) => {
+						res.currentTarget.close();
+					});*/
 				});
 
 				URL.filter(post.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {
