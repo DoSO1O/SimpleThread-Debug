@@ -58,25 +58,40 @@ Span[UUID="Thread_Post_Actions_Plus_Count"] {
 	Height: 100%;
 }
 
+
+
 #FlowPanel_Btns {
 	Position: Absolute;
 	Right: 0;
 	Bottom: 0;
 
 	Display: Flex;
-	Flex-Direction: Column;
+	Flex-Direction: Row-Reverse;
 
 	Padding: 5vh 4vw;
 }
 
-#FlowPanel_Btns > * {
-	Margin-Bottom: 5vh;
-}
-
-#FlowPanel_Btns > *:Last-Child {
-	Margin-Bottom: 0;
-}
-
-#FlowPanel_Btns > *[Disabled] {
+#FlowPanel_Btns *[Disabled] {
 	Display: None;
+}
+
+#FlowPanel_Btns > Div {
+	Margin-Left: 2.5vw;
+}
+
+#FlowPanel_Btns > Div:Last-Child {
+	Margin-Left: 0;
+}
+
+.FlowPanel_Btns_Row {
+	Display: Flex;
+	Flex-Direction: Column;
+}
+
+.FlowPanel_Btns_Row > * {
+	Margin-Bottom: 2.5vw;
+}
+
+.FlowPanel_Btns_Row > *:Last-Child {
+	Margin-Bottom: 0;
 }

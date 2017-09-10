@@ -47,6 +47,7 @@
 			<Header ID = "Header" Class = "mdl-layout__header">
 				<Div Class = "mdl-layout__header-row">
 					<Span ID = "Header_Title" Class = "mdl-layout-title">Simple Thread</Span>
+
 					<Div Class = "mdl-layout-spacer"></Div>
 
 					<Nav Class = "mdl-navigation">
@@ -138,22 +139,18 @@
 
 						<Div ID = "Dialogs_Profile_InfoViewer_Content_Info">
 							<Span ID = "Dialogs_Profile_InfoViewer_Content_Info_Name" Class = "mdl-layout__title"></Span>
-
 							<Div ID = "Dialogs_Profile_InfoViewer_Content_Info_Detail"></Div>
 
 							<Span Class = "mdl-layout__title">リンク</Span>
-
-							<Div ID = "Dialogs_Profile_InfoViewer_Content_Info_Links">
-								
-							</Div>
+							<Div ID = "Dialogs_Profile_InfoViewer_Content_Info_Links"></Div>
 						</Div>
-
-						<Input ID = "Dialogs_Profile_InfoViewer_Content_UID" Type = "Hidden" Value = "" />
 					</Div>
 
 					<Div ID = "Dialogs_Profile_InfoViewer_Btns" Class = "mdl-dialog__actions">
 						<Button ID = "Dialogs_Profile_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
 					</Div>
+
+					<Input ID = "Dialogs_Profile_InfoViewer_UID" Type = "Hidden" Value = "" />
 				</Dialog>
 			</Div>
 
@@ -182,20 +179,36 @@
 					</Div>
 				</Dialog>
 
+				<Dialog ID = "Dialogs_Thread_InfoViewer" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_InfoViewer_Content" Class = "mdl-dialog__content">
+						<Span ID = "Dialogs_Thread_InfoViewer_Content_Name" Class = "mdl-layout__title"></Span>
+						<Div ID = "Dialogs_Thread_InfoViewer_Content_Overview"></Div>
+
+						<Span Class = "mdl-layout__title">詳細...</Span>
+						<Div ID = "Dialogs_Thread_InfoViewer_Content_Detail"></Div>
+					</Div>
+
+					<Div ID = "Dialogs_Thread_InfoViewer_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
+					</Div>
+
+					<Input ID = "Dialogs_Thread_InfoViewer_TID" Type = "Hidden" Value = "" />
+				</Dialog>
+
 				<Dialog ID = "Dialogs_Thread_Poster" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Thread_Poster_Content" Class = "mdl-dialog__content">
 						<Div ID = "Dialogs_Thread_Poster_Content_Value" Class = "mdl-textfield mdl-js-textfield">
 							<Textarea ID = "Dialogs_Thread_Poster_Content_Value_Input" Class = "mdl-textfield__input" Rows = "15" MaxLength = "500" Required = "Required"></Textarea>
 							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_Content_Value_Input">最近の出来事を共有してみましょう</Label>
 						</Div>
-
-						<Input ID = "Dialogs_Thread_Poster_Content_TID" Type = "Hidden" Value = "" />
 					</Div>
 
 					<Div ID = "Dialogs_Thread_Poster_Btns" Class = "mdl-dialog__actions">
 						<Button ID = "Dialogs_Thread_Poster_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit">投稿</Button>
 						<Button ID = "Dialogs_Thread_Poster_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">キャンセル</Button>
 					</Div>
+
+					<Input ID = "Dialogs_Thread_Poster_TID" Type = "Hidden" Value = "" />
 				</Dialog>
 			</Div>
 		</Div>

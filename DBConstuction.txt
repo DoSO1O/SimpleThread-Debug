@@ -41,7 +41,6 @@ Root
 				> uid: UID
 				> content: String
 				> createdAt: DateString
-				> plusCount: Number
 
 			> 1
 				> ...

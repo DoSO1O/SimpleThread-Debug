@@ -50,12 +50,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	watchers.push({
+	watchers["Dialogs_Profile_InfoViewer_UID"] = {
 		valueObj: { value: "" },
 		watcher: null
-	}); watchers[watchers.length - 1].watcher = new DOM.Watcher({
-		target: watchers[watchers.length - 1].valueObj,
-		onGet: () => { watchers[watchers.length - 1].valueObj.value = DOM("#Dialogs_Profile_InfoViewer_Content_UID").value },
+	}; watchers["Dialogs_Profile_InfoViewer_UID"].watcher = new DOM.Watcher({
+		target: watchers["Dialogs_Profile_InfoViewer_UID"].valueObj,
+		onGet: () => { watchers["Dialogs_Profile_InfoViewer_UID"].valueObj.value = DOM("#Dialogs_Profile_InfoViewer_UID").value },
 
 		onChange: (watcher) => {
 			base.Database.get(base.Database.ONCE, `users/${watcher.newValue}`, (res) => {
@@ -74,10 +74,6 @@ window.addEventListener("DOMContentLoaded", () => {
 				}
 			});
 		}
-	});
-
-	watchers.forEach((watcherObj) => {
-		DOM.Watcher.addWatcher(watcherObj.watcher);
 	});
 
 
@@ -122,12 +118,30 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
+
+
+	watchers["Dialogs_Thread_InfoViewer_TID"] = {
+		valueObj: { value: "0" },
+		watcher: null
+	}; watchers["Dialogs_Thread_InfoViewer_TID"].watcher = new DOM.Watcher({
+		target: watchers["Dialogs_Thread_InfoViewer_TID"].valueObj,
+		onGet: () => { watchers["Dialogs_Thread_InfoViewer_TID"].valueObj.value = DOM("#Dialogs_Thread_InfoViewer_TID").value },
+
+		onChange: (watcher) => {
+			base.Database.get(base.Database.ONCE, `threads/${watcher.newValue}`, (res) => {
+				DOM("#Dialogs_Thread_InfoViewer_Content_Name").textContent = res.title,
+				DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent = res.overview,
+				DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent = res.detail;
+			});
+		}
+	});
+
 	
 
 	DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			base.Database.transaction("threads/" + DOM("#Dialogs_Thread_Poster_Content_TID").value + "/data", (res) => {
-				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_Content_TID").value + "/data/" + res.length, {
+			base.Database.transaction("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
+				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
 					uid: base.user.uid,
 					content: DOM("#Dialogs_Thread_Poster_Content_Value_Input").value,
 					createdAt: new Date().getTime()
@@ -151,4 +165,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 	});
+
+
+
+	for (let watcherName in watchers) DOM.Watcher.addWatcher(watchers[watcherName].watcher);
 });
