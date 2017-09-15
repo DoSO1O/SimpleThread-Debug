@@ -164,6 +164,10 @@ class Components {
 								[/\${createdAt}/g, createdAt || ""]
 							]);
 
+							/*URL.filter(componentWrapper.firstElementChild.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {
+								post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML = post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+							});*/
+
 						return componentWrapper.firstElementChild;
 					} catch (error) {}
 				}; Post.prototype = Object.create(null, {
