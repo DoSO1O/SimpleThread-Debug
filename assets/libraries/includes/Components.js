@@ -7,7 +7,7 @@ class Components {
 		try {
 			doc.innerHTML = DOM.xhr({
 				type: "GET",
-				url: "/SimpleThread-Debug/includes/Components.html",
+				url: "/SimpleThread-Debug/assets/libraries/includes/Components.html",
 				doesSync: false
 			}).response;
 		} catch (error) {}

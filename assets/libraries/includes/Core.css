@@ -1,5 +1,5 @@
 Body {
-	Background: URL("Assets/Images/Back.jpg");
+	Background: URL("/SimpleThread-Debug/assets/images/Back.jpg");
 }
 
 *.mdl-grid > *.mdl-cell {

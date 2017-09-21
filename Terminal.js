@@ -1,4 +1,11 @@
-importScripts("https://www.gstatic.com/firebasejs/4.2.0/firebase.js", "https://genbuproject.github.io/Programs/FirebasePlus.js");
+importScripts(
+	"https://www.gstatic.com/firebasejs/4.2.0/firebase.js",
+	"https://genbuproject.github.io/Programs/FirebasePlus.js",
+
+	"/SimpleThread-Debug/assets/libraries/classes/FileLoader.js"
+);
+
+let locales = new JSONLoader();
 
 self.addEventListener("message", (event) => {
 	let message = event.data || {};
@@ -22,6 +29,10 @@ self.addEventListener("message", (event) => {
 				data: message.data
 			});
 
+			break;
+
+		case "Code-RequestLocalesData":
+			self.postMessage(locales.load(`/SimpleThread-Debug/assets/locales/${message.data}`));
 			break;
 	}
 
