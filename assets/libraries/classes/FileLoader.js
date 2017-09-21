@@ -24,20 +24,3 @@ class FileLoader {
 }; Object.defineProperties(FileLoader.prototype, {
 	currentData: { value: null, configurable: true, writable: true, enumerable: true }
 });
-
-class JSONLoader extends FileLoader {
-	constructor () { super() }
-
-	/**
-	 * 指定されたurlからJSONデータを読み込む
-	 * @memberof JSONLoader
-	 * 
-	 * @param {any} url 
-	 */
-	load (url) {
-		this.currentData = JSON.parse(super.load(url));
-		return this.currentData;
-	}
-}; Object.defineProperties(FileLoader.prototype, {
-	currentData: { value: null, configurable: true, writable: true, enumerable: true }
-});

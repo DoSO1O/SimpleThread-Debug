@@ -71,15 +71,25 @@ window.terminal = (() => {
 					});
 
 					break;
+
+				case "Code-SendLocales":
+					locales = message.data;
+
+					DOM("$IFrame#Page").contentWindow.postMessage({
+						code: "Code-SendLocalesToPage",
+						data: locales
+					}, location.origin);
+
+					break;
 			}
 
 			//console.info(message);
 		});
 
-		terminal.postMessage({ code: "Code-Initialize" });
-
 	return terminal;
 })();
+
+window.locales = {};
 
 
 
