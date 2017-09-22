@@ -8,6 +8,6 @@ class LangLoader extends JSONLoader {
 	 * @param {String} lang
 	 */
 	load (lang) {
-		super.load(`/SimpleThread-Debug/assets/locales/${lang}.json`);
+		return super.load(`/SimpleThread-Debug/assets/locales/${lang}.json`);
 	}
 }
