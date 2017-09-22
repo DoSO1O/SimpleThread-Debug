@@ -5,6 +5,20 @@
 		<Meta Charset = "UTF-8" />
 		<Title>Simple Thread</Title>
 		<Link Rel = "ShortCut Icon" Href = "favicon.ico" />
+
+		<Script Src = "https://genbuproject.github.io/Programs/DOM Extender/DOM Extender v3.0.js"></Script>
+		
+		<Script Src = "/SimpleThread-Debug/assets/libraries/classes/FileLoader.js"></Script>
+		<Script Src = "/SimpleThread-Debug/assets/libraries/classes/JSONLoader.js"></Script>
+		<Script Src = "/SimpleThread-Debug/assets/libraries/classes/LangLoader.js"></Script>
+		
+		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/Components.js"></Script>
+		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/dialog-polyfill.js"></Script>
+		<Link Rel = "StyleSheet" Href = "/SimpleThread-Debug/assets/libraries/includes/dialog-polyfill.css" />
+
+		<Script Src = "https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></Script>
+		<Script Src = "https://genbuproject.github.io/Programs/FirebasePlus.js"></Script>
+		<Script Src = "https://caligatio.github.io/jsSHA/sha.js"></Script>
 		
 		<Link Rel = "StyleSheet" Href = "https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<Link Rel = "StyleSheet" Href = "https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
@@ -12,22 +26,13 @@
 		<Script Src = "https://genbuproject.github.io/Programs/MDL Extender/MDL Extender.js"></Script>
 		<Link Rel = "StyleSheet" Href = "https://genbuproject.github.io/Programs/MDL Extender/MDL Extender.css" />
 
-		<Script Src = "https://genbuproject.github.io/Programs/DOM Extender/DOM Extender v3.0.js"></Script>
-		<Script Src = "https://caligatio.github.io/jsSHA/sha.js"></Script>
-		<Script Src = "https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></Script>
-		<Script Src = "https://genbuproject.github.io/Programs/FirebasePlus.js"></Script>
-
 		<Script Src = "Main.js"></Script>
 		<Link Rel = "StyleSheet" Href = "Main.css" />
+		<Script Src = "Dialog.js"></Script>
+		<Link Rel = "StyleSheet" Href = "Dialog.css" />
 		
 		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/Core.js"></Script>
 		<Link Rel = "StyleSheet" Href = "/SimpleThread-Debug/assets/libraries/includes/Core.css" />
-		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/Components.js"></Script>
-		
-		<Script Src = "assets/libraries/includes/dialog-polyfill.js"></Script>
-		<Link Rel = "StyleSheet" Href = "assets/libraries/includes/dialog-polyfill.css" />
-		<Script Src = "Dialog.js"></Script>
-		<Link Rel = "StyleSheet" Href = "Dialog.css" />
 
 		<Style UUID = "Dialogs_Profile_InfoViewer_Content_Photo--Manager"></Style>
 
@@ -47,7 +52,7 @@
 		<Div Class = "mdl-layout mdl-js-layout mdl-layout--fixed-header">
 			<Header ID = "Header" Class = "mdl-layout__header">
 				<Div Class = "mdl-layout__header-row">
-					<Span ID = "Header_Title" Class = "mdl-layout-title">${main.title}</Span>
+					<Span ID = "Header_Title" Class = "mdl-layout-title" Data-Locales = "main.title"></Span>
 
 					<Div Class = "mdl-layout-spacer"></Div>
 

@@ -12,7 +12,7 @@ try {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-	parent.applyLocales();
+	parent.applyLocales.call(this);
 
 	DOM('@A[Href]:Not([Target]):Not([Href^="javascript:"])').forEach((elem) => {
 		elem.addEventListener("click", (event) => {
@@ -28,3 +28,9 @@ window.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 });
+
+window.addEventListener("DOMNodeInserted", (event) => {
+	console.log(event);
+
+	//parent.applyLocales(event.relatedNode);
+})

@@ -1,10 +1,6 @@
 importScripts(
 	"https://www.gstatic.com/firebasejs/4.2.0/firebase.js",
-	"https://genbuproject.github.io/Programs/FirebasePlus.js",
-
-	"/SimpleThread-Debug/assets/libraries/classes/FileLoader.js",
-	"/SimpleThread-Debug/assets/libraries/classes/JSONLoader.js",
-	"/SimpleThread-Debug/assets/libraries/classes/LangLoader.js"
+	"https://genbuproject.github.io/Programs/FirebasePlus.js"
 );
 
 self.addEventListener("message", (event) => {
@@ -31,14 +27,7 @@ self.addEventListener("message", (event) => {
 
 			break;
 
-		case "Code-RequestLocales":
-			self.postMessage({
-				code: "Code-SendLocales",
-				data: new LangLoader().load(message.data)
-			});
-
+		case "Code-SendHasLogined":
 			break;
 	}
-
-	//console.info(message);
 });
