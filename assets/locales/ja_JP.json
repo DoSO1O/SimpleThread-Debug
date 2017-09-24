@@ -1,13 +1,18 @@
 {
 	"common.title": "Simple Thread",
+	"common.dialog_yes": "はい",
+	"common.dialog_no": "いいえ",
+	"common.dialog_close": "閉じる",
+	"common.dialog_cancel": "キャンセル",
 
 	"main.top": "Top",
 	"main.signIn": "Sign In",
 	"main.signOut": "Sign Out",
 	"main.profileBtn-hint": "See your profile",
 
+	"dialog.account.createNotify.content": ["アカウントを作成しました。", "Simple Threadにようこそ！！"],
+
 	"top.introduce": ["Simple Threadへようこそ！", "当サービスでは 'Be Simple, Be Free' をモットーに、他サービスと比べ自由に話せるスレ板を提供しますΣd(´・ω・｀)"],
 
-	"thread.admin": "管理中のスレッド",
-	"thread_viewer.post": ""
+	"thread.admin": "管理中のスレッド"
 }
