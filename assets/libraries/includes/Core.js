@@ -4,6 +4,8 @@ window.locales = parent.locales;
 
 
 
+localStorage.getItem("com.GenbuProject.SimpleThread.currentLocales") || localStorage.setItem("com.GenbuProject.SimpleThread.currentLocales", "ja_JP");
+
 try {
 	terminal.postMessage({ code: "Code-Connected" });
 	terminal.postMessage({ code: "Code-RequestHasLogined" });
@@ -30,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("DOMNodeInserted", (event) => {
-	console.log(event);
+	//console.log(event);
 
 	//parent.applyLocales(event.relatedNode);
 })
