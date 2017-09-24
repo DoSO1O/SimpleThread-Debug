@@ -4,8 +4,6 @@ window.locales = parent.locales;
 
 
 
-localStorage.getItem("com.GenbuProject.SimpleThread.currentLocales") || localStorage.setItem("com.GenbuProject.SimpleThread.currentLocales", "ja_JP");
-
 try {
 	terminal.postMessage({ code: "Code-Connected" });
 	terminal.postMessage({ code: "Code-RequestHasLogined" });

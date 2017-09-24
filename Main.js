@@ -1,3 +1,5 @@
+localStorage.getItem("com.GenbuProject.SimpleThread.currentLocales") || localStorage.setItem("com.GenbuProject.SimpleThread.currentLocales", "ja_JP");
+
 function applyLocales () {
 	let localizedElems = this.document.querySelectorAll('*[Data-Locales]');
 	
