@@ -1,15 +1,3 @@
-localStorage.getItem("com.GenbuProject.SimpleThread.currentLocales") || localStorage.setItem("com.GenbuProject.SimpleThread.currentLocales", "ja_JP");
-
-function applyLocales () {
-	let localizedElems = this.document.querySelectorAll('*[Data-Locales]');
-	
-	localizedElems.forEach((elem) => {
-		elem.innerHTML = locales[elem.dataset.locales];
-	});
-}
-
-
-
 window.base = new FirebasePlus({
 	apiKey: atob("QUl6YVN5QTYydVBrTjZXTlY0MW9XV3pPZGlJVE1iQkY5UkRZT2hN"),
 	authDomain: "simple-thread.firebaseapp.com",
@@ -19,7 +7,13 @@ window.base = new FirebasePlus({
 	messagingSenderId: atob("NjQ2NTI3MzA2ODAz")
 }, (user) => {
 	if (user) {
+		DOM("#Header_SignInOut").dataset.locales = "main.signOut";
+
 		base.Database.getInfo(base.Database.ONCE, "users/" + user.uid, (res) => {
+			DOM('@A[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
+				btn.dataset.uid = base.user.uid;
+			});
+
 			if (!res.exists()) {
 				base.Database.set("users/" + user.uid, {
 					gplusName: user.providerData[0].displayName,
@@ -29,20 +23,14 @@ window.base = new FirebasePlus({
 					links: []
 				});
 
-				document.querySelector("#Dialogs_Account_CreateNotify").showModal();
+				DOM("#Dialogs_Account_CreateNotify").showModal();
+			} else {
+				base.Database.update("users/" + user.uid, {
+					gplusName: user.providerData[0].displayName,
+					gplusPhoto: user.photoURL
+				});
 			}
-
-			DOM('@A[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
-				btn.dataset.uid = base.user.uid;
-			});
-
-			base.Database.update("users/" + user.uid, {
-				gplusName: user.providerData[0].displayName,
-				gplusPhoto: user.photoURL
-			});
 		});
-
-		DOM("#Header_SignInOut").textContent = "Sign Out";
 	} else {
 		window.addEventListener("DOMContentLoaded", () => {
 			DOM('@*[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
@@ -50,6 +38,8 @@ window.base = new FirebasePlus({
 			});
 		});
 	}
+
+	locales.applyToElement(DOM("#Header_SignInOut"));
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {
 		for (let uid in res) {
@@ -89,7 +79,12 @@ window.terminal = (() => {
 	return terminal;
 })();
 
-window.locales = new LangLoader().load(localStorage.getItem("com.GenbuProject.SimpleThread.currentLocales"));
+window.locales = (() => {
+	let locales = new LangLoader();
+		locales.load(localStorage.getItem("com.GenbuProject.SimpleThread.currentLang"));
+
+	return locales;
+})();
 
 
 
@@ -102,12 +97,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	DOM("#Header_SignInOut").addEventListener("click", () => {
-		switch (DOM("#Header_SignInOut").textContent) {
-			case "Sign In":
+		switch (DOM("#Header_SignInOut").dataset.locales) {
+			case "main.signIn":
 				base.signIn(["https://www.googleapis.com/auth/plus.login"]);
 				break;
 				
-			case "Sign Out":
+			case "main.signOut":
 				base.signOut();
 				break;
 				

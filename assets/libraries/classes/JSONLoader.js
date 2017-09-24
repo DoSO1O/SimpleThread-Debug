@@ -1,6 +1,8 @@
 class JSONLoader extends FileLoader {
 	constructor () { super() }
 
+
+	
 	/**
 	 * 指定されたurlからJSONデータを読み込む
 	 * @memberof JSONLoader

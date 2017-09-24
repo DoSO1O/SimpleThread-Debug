@@ -1,4 +1,13 @@
 {
-	"main.title": "Simple Thread",
-	"thread.admin": "管理中のスレッド"
+	"common.title": "Simple Thread",
+
+	"main.top": "Top",
+	"main.signIn": "Sign In",
+	"main.signOut": "Sign Out",
+	"main.profileBtn-hint": "See your profile",
+
+	"top.introduce": ["Simple Threadへようこそ！", "当サービスでは 'Be Simple, Be Free' をモットーに、他サービスと比べ自由に話せるスレ板を提供しますΣd(´・ω・｀)"],
+
+	"thread.admin": "管理中のスレッド",
+	"thread_viewer.post": ""
 }

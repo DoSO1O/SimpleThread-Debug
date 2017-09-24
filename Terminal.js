@@ -1,8 +1,3 @@
-importScripts(
-	"https://www.gstatic.com/firebasejs/4.2.0/firebase.js",
-	"https://genbuproject.github.io/Programs/FirebasePlus.js"
-);
-
 self.addEventListener("message", (event) => {
 	let message = event.data || {};
 		message.code = message.code || "",

@@ -52,29 +52,31 @@
 		<Div Class = "mdl-layout mdl-js-layout mdl-layout--fixed-header">
 			<Header ID = "Header" Class = "mdl-layout__header">
 				<Div Class = "mdl-layout__header-row">
-					<Span ID = "Header_Title" Class = "mdl-layout-title" Data-Locales = "main.title"></Span>
+					<Span ID = "Header_Title" Class = "mdl-layout-title" Data-Locales = "common.title">Simple Thread</Span>
 
 					<Div Class = "mdl-layout-spacer"></Div>
 
 					<Nav Class = "mdl-navigation">
-						<A Class = "mdl-navigation__link" Href = "Top/">Top</A>
-						<A ID = "Header_SignInOut" Class = "mdl-navigation__link">Sign In</A>
+						<A Class = "mdl-navigation__link" Href = "Top/" Data-Locales = "main.top">Top</A>
+						<A ID = "Header_SignInOut" Class = "mdl-navigation__link" Data-Locales = "main.signIn">Sign In</A>
 						<A ID = "Header_AccountPane-Btn" UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
 
-						<Div Class = "mdl-tooltip" For = "Header_AccountPane-Btn">See your profile</Div>
+						<Div Class = "mdl-tooltip" For = "Header_AccountPane-Btn" Data-Locales = "main.profileBtn_hint">See your profile</Div>
 					</Nav>
 				</Div>
 			</Header>
 
 			<Div ID = "Drawer" Class = "mdl-layout__drawer">
 				<Span Class = "mdl-layout-title">
-					Simple Thread
-					<A UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
+					<Span Data-Locales = "common.title">Simple Thread</Span>
+					<A ID = "Drawer_AccountPane-Btn" UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
+
+					<Div Class = "mdl-tooltip" For = "Drawer_AccountPane-Btn" Data-Locales = "main.profileBtn_hint">See your profile</Div>
 				</Span>
 
 				<Nav Class = "mdl-navigation">
-					<A Class = "mdl-navigation__link" Href = "Top/">Top</A>
-					<A Class = "mdl-navigation__link" Href = "Thread/">Thread</A>
+					<A Class = "mdl-navigation__link" Href = "Top/" Data-Locales = "main.top">Top</A>
+					<A Class = "mdl-navigation__link" Href = "Thread/" Data-Locales = "main.thread">Thread</A>
 				</Nav>
 			</Div>
 

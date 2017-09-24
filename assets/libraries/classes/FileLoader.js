@@ -1,6 +1,8 @@
 class FileLoader {
 	constructor () {}
 	
+
+	
 	/**
 	 * 指定されたurlからファイルを読み込む
 	 * @memberof FileLoader
