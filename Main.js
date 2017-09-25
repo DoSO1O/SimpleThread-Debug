@@ -93,7 +93,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		!DOM("#Drawer") || DOM("#Drawer").classList.remove("is-visible"),
 		!DOM("$Div.mdl-layout__obfuscator") || DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
 
-		if (DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") DOM("#Header_Title").textContent = "Simple Thread";
+		if (DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") locales.applyToElement(DOM("#Header_Title"));
 	});
 
 	DOM("#Header_SignInOut").addEventListener("click", () => {

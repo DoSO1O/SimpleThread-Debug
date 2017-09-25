@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("DOMNodeInserted", (event) => {
-	if (event.relatedNode.dataset && event.relatedNode.dataset.locales) {
+	if (event.target.nodeName != "#text" && event.relatedNode.dataset && event.relatedNode.dataset.locales) {
 		locales.applyToElement(event.relatedNode);
 	}
 });

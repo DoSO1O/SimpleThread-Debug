@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID, (res) => {
-		doc.querySelector("#Header_Title").textContent = `Simple Thread 【${res.title}】`;
+		doc.querySelector("#Header_Title").textContent = `${res.title}`;
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID + "/data", (res) => {
