@@ -2,10 +2,6 @@ Dialog[ID^="Dialogs"] {
 	Width: 50%;
 }
 
-Dialog *[Data-Locales] {
-	White-Space: Pre-Line;
-}
-
 Dialog[ID^="Dialogs"] Div.mdl-textfield {
 	Width: 100%;
 }
@@ -66,6 +62,6 @@ Img[UUID="Dialogs_Profile_InfoViewer_Content_Info_Links_Link_Icon"] {
 
 
 
-#Dialogs_Thread_Poster_Content_Value_Input {
+#Dialogs_Thread_Poster_Content_Text_Input {
 	Resize: None;
 }

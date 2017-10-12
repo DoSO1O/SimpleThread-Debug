@@ -61,7 +61,7 @@
 						<A ID = "Header_SignInOut" Class = "mdl-navigation__link" Data-Locales = "main.signIn">Sign In</A>
 						<A ID = "Header_AccountPane-Btn" UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
 
-						<Div Class = "mdl-tooltip" For = "Header_AccountPane-Btn" Data-Locales = "main.profileBtn_hint">See your profile</Div>
+						<Div Class = "mdl-tooltip" For = "Header_AccountPane-Btn" Data-Locales = "main.profileBtn-hint">See your profile</Div>
 					</Nav>
 				</Div>
 			</Header>
@@ -71,12 +71,13 @@
 					<Span Data-Locales = "common.title">Simple Thread</Span>
 					<A ID = "Drawer_AccountPane-Btn" UUID = "ProfilePhoto-Btn" Class = "mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect ProfilePhoto" Href = "Profile/"></A>
 
-					<Div Class = "mdl-tooltip" For = "Drawer_AccountPane-Btn" Data-Locales = "main.profileBtn_hint">See your profile</Div>
+					<Div Class = "mdl-tooltip" For = "Drawer_AccountPane-Btn" Data-Locales = "main.profileBtn-hint">See your profile</Div>
 				</Span>
 
 				<Nav Class = "mdl-navigation">
 					<A Class = "mdl-navigation__link" Href = "Top/" Data-Locales = "main.top">Top</A>
 					<A Class = "mdl-navigation__link" Href = "Thread/" Data-Locales = "main.thread">Thread</A>
+					<A Class = "mdl-navigation__link" Href = "ServerInfo/" Data-Locales = "main.serverInfo">Server Info</A>
 				</Nav>
 			</Div>
 
@@ -88,7 +89,7 @@
 		<Div ID = "Dialogs">
 			<Div ID = "Dialogs_Account">
 				<Dialog ID = "Dialogs_Account_CreateNotify" Class = "mdl-dialog">
-					<Div ID = "Dialogs_Account_CreateNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.account.createNotify.content">
+					<Div ID = "Dialogs_Account_CreateNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.account.createNotify">
 						アカウントを作成しました。
 						Simple Threadにようこそ！！
 					</Div>
@@ -99,12 +100,12 @@
 				</Dialog>
 
 				<Dialog ID = "Dialogs_Account_DeleteNotify" Class = "mdl-dialog">
-					<Div ID = "Dialogs_Account_DeleteNotify_Content" Class = "mdl-dialog__content">
+					<Div ID = "Dialogs_Account_DeleteNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.account.deleteNotify">
 						アカウントを削除しました。
 					</Div>
 
 					<Div ID = "Dialogs_Account_DeleteNotify_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Account_DeleteNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
+						<Button ID = "Dialogs_Account_DeleteNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
 					</Div>
 				</Dialog>
 			</Div>
@@ -116,7 +117,7 @@
 					</Div>
 
 					<Div ID = "Dialogs_Profile_ChangeNotify_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Profile_ChangeNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
+						<Button ID = "Dialogs_Profile_ChangeNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
 					</Div>
 				</Dialog>
 
@@ -124,20 +125,22 @@
 
 				<Dialog ID = "Dialogs_Profile_DeleteConfirmer" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Profile_DeleteConfirmer_Content" Class = "mdl-dialog__content">
-						本当にアカウントを削除しますか？<Br />
-						処理を続行するにはメールアドレスを入力してください。
+						<Div Data-Locales = "dialog.profile.deleteConfirmer">
+							本当にアカウントを削除しますか？
+							処理を続行するにはメールアドレスを入力してください。
+						</Div>
 
 						<Div ID = "Dialogs_Profile_DeleteConfirmer_Content_Email" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<Input ID = "Dialogs_Profile_DeleteConfirmer_Content_Email_Input" Class = "mdl-textfield__input" Type = "Email" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Profile_DeleteConfirmer_Content_Email_Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Email_Input">メールアドレス...*</Label>
+							<Label ID = "Dialogs_Profile_DeleteConfirmer_Content_Email_Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Email_Input" Data-Locales = "dialog.profile.deleteConfirmer.email">メールアドレス...*</Label>
 
-							<Span Class = "mdl-textfield__error">無効なメールアドレスです</Span>
+							<Span Class = "mdl-textfield__error" Data-Locales = "dialog.profile.deleteConfirmer.email-error">無効なメールアドレスです</Span>
 						</Div>
 					</Div>
 
 					<Div ID = "Dialogs_Profile_DeleteConfirmer_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Profile_DeleteConfirmer_Btns_Yes" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button">はい</Button>
-						<Button ID = "Dialogs_Profile_DeleteConfirmer_Btns_No" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">いいえ</Button>
+						<Button ID = "Dialogs_Profile_DeleteConfirmer_Btns_Yes" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "common.dialog_yes">はい</Button>
+						<Button ID = "Dialogs_Profile_DeleteConfirmer_Btns_No" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_no">いいえ</Button>
 					</Div>
 				</Dialog>
 
@@ -149,13 +152,13 @@
 							<Span ID = "Dialogs_Profile_InfoViewer_Content_Info_Name" Class = "mdl-layout__title"></Span>
 							<Div ID = "Dialogs_Profile_InfoViewer_Content_Info_Detail"></Div>
 
-							<Span Class = "mdl-layout__title">リンク</Span>
+							<Span Class = "mdl-layout__title" Data-Locales = "dialog.profile.infoViewer.link">リンク</Span>
 							<Div ID = "Dialogs_Profile_InfoViewer_Content_Info_Links"></Div>
 						</Div>
 					</Div>
 
 					<Div ID = "Dialogs_Profile_InfoViewer_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Profile_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
+						<Button ID = "Dialogs_Profile_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
 					</Div>
 
 					<Input ID = "Dialogs_Profile_InfoViewer_UID" Type = "Hidden" Value = "" />
@@ -167,23 +170,23 @@
 					<Div ID = "Dialogs_Thread_InfoInputer_Content" Class = "mdl-dialog__content">
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Name" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<Input ID = "Dialogs_Thread_InfoInputer_Content_Name_Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Name_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Name_Input">スレッド名...*</Label>
+							<Label ID = "Dialogs_Thread_InfoInputer_Content_Name_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Name_Input" Data-Locales = "dialog.thread.infoInputer.name">スレッド名...*</Label>
 						</Div>
 
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Overview" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<Input ID = "Dialogs_Thread_InfoInputer_Content_Overview_Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Overview_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Overview_Input">概要...*</Label>
+							<Label ID = "Dialogs_Thread_InfoInputer_Content_Overview_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Overview_Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
 						</Div>
 
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Detail" Class = "mdl-textfield mdl-js-textfield">
 							<Textarea ID = "Dialogs_Thread_InfoInputer_Content_Detail_Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
-							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail_Input">詳細...</Label>
+							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail_Input" Data-Locales = "dialog.thread.infoInputer.detail">詳細...</Label>
 						</Div>
 					</Div>
 
 					<Div ID = "Dialogs_Thread_InfoInputer_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Thread_InfoInputer_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit">作成</Button>
-						<Button ID = "Dialogs_Thread_InfoInputer_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">キャンセル</Button>
+						<Button ID = "Dialogs_Thread_InfoInputer_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.infoInputer.submit">作成</Button>
+						<Button ID = "Dialogs_Thread_InfoInputer_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
 					</Div>
 				</Dialog>
 
@@ -192,12 +195,12 @@
 						<Span ID = "Dialogs_Thread_InfoViewer_Content_Name" Class = "mdl-layout__title"></Span>
 						<Div ID = "Dialogs_Thread_InfoViewer_Content_Overview"></Div>
 
-						<Span Class = "mdl-layout__title">詳細...</Span>
+						<Span Class = "mdl-layout__title" Data-Locales = "dialog.thread.infoViewer.detail">詳細...</Span>
 						<Div ID = "Dialogs_Thread_InfoViewer_Content_Detail"></Div>
 					</Div>
 
 					<Div ID = "Dialogs_Thread_InfoViewer_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Thread_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">閉じる</Button>
+						<Button ID = "Dialogs_Thread_InfoViewer_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
 					</Div>
 
 					<Input ID = "Dialogs_Thread_InfoViewer_TID" Type = "Hidden" Value = "" />
@@ -205,15 +208,15 @@
 
 				<Dialog ID = "Dialogs_Thread_Poster" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Thread_Poster_Content" Class = "mdl-dialog__content">
-						<Div ID = "Dialogs_Thread_Poster_Content_Value" Class = "mdl-textfield mdl-js-textfield">
-							<Textarea ID = "Dialogs_Thread_Poster_Content_Value_Input" Class = "mdl-textfield__input" Rows = "15" MaxLength = "500" Required = "Required"></Textarea>
-							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_Content_Value_Input">最近の出来事を共有してみましょう</Label>
+						<Div ID = "Dialogs_Thread_Poster_Content_Text" Class = "mdl-textfield mdl-js-textfield">
+							<Textarea ID = "Dialogs_Thread_Poster_Content_Text_Input" Class = "mdl-textfield__input" Rows = "15" MaxLength = "500" Required = "Required"></Textarea>
+							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_Content_Text_Input" Data-Locales = "dialog.thread.poster.text">最近の出来事を共有してみましょう</Label>
 						</Div>
 					</Div>
 
 					<Div ID = "Dialogs_Thread_Poster_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Thread_Poster_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit">投稿</Button>
-						<Button ID = "Dialogs_Thread_Poster_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close">キャンセル</Button>
+						<Button ID = "Dialogs_Thread_Poster_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.poster.submit">投稿</Button>
+						<Button ID = "Dialogs_Thread_Poster_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
 					</Div>
 
 					<Input ID = "Dialogs_Thread_Poster_TID" Type = "Hidden" Value = "" />

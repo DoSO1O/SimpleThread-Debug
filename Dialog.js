@@ -37,6 +37,14 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 
+	
+	DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email_Input").addEventListener("input", () => {
+		if (DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email_Input").value == base.user.email) {
+			DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.remove("mdl-button--disabled");
+		} else {
+			DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.add("mdl-button--disabled");
+		}
+	});
 
 	DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
@@ -132,6 +140,14 @@ window.addEventListener("DOMContentLoaded", () => {
 				DOM("#Dialogs_Thread_InfoViewer_Content_Name").textContent = res.title,
 				DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent = res.overview,
 				DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent = res.detail;
+
+				URL.filter(DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent).forEach((urlString) => {
+					DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML = DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+				});
+	
+				URL.filter(DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent).forEach((urlString) => {
+					DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML = DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+				});
 			});
 		}
 	});
@@ -143,13 +159,13 @@ window.addEventListener("DOMContentLoaded", () => {
 			base.Database.transaction("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
 				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
 					uid: base.user.uid,
-					content: DOM("#Dialogs_Thread_Poster_Content_Value_Input").value,
+					content: DOM("#Dialogs_Thread_Poster_Content_Text_Input").value,
 					createdAt: new Date().getTime()
 				});
 
 				DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
-				DOM("#Dialogs_Thread_Poster_Content_Value").classList.remove("is-dirty"),
-				DOM("#Dialogs_Thread_Poster_Content_Value_Input").value = "";
+				DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
+				DOM("#Dialogs_Thread_Poster_Content_Text_Input").value = "";
 				
 				DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 				
@@ -160,8 +176,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	DOM("#Dialogs_Thread_Poster_Btns_Cancel").addEventListener("click", () => {
 		DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
-		DOM("#Dialogs_Thread_Poster_Content_Value").classList.remove("is-dirty"),
-		DOM("#Dialogs_Thread_Poster_Content_Value_Input").value = "";
+		DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
+		DOM("#Dialogs_Thread_Poster_Content_Text_Input").value = "";
 
 		DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 	});

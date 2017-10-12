@@ -10,6 +10,10 @@ A:Not([Href]) {
 	Cursor: Pointer;
 }
 
+*[Data-Locales] {
+	White-Space: Pre-Line;
+}
+
 
 
 *[UUID="ProfilePhoto"] {

@@ -13,6 +13,18 @@ terminal.addEventListener("message", (event) => {
 window.addEventListener("DOMContentLoaded", () => {
 	DOM("#Profile_Photo").dataset.uid = base.user.uid;
 
+	DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content').dataset.locales = "profile.url";
+	locales.applyToElement(DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content'));
+
+	DOM("#Profile_Info_URL_Add").addEventListener("click", () => {
+		DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label').dataset.locales = "profile.url.title",
+		DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label').dataset.locales = "profile.url.value";
+		locales.applyToElement(DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label')),
+		locales.applyToElement(DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label'));
+	});
+
+	
+
 	base.Database.get(base.Database.ONCE, "users", (res) => {
 		for (let uid in res) {
 			let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
@@ -56,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("#Profile_Info_Btns_Apply").addEventListener("click", () => {
+	DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
 		base.Database.update("users/" + base.user.uid, {
 			userName: DOM("#Profile_Info_Name_Input").value,
 			detail: DOM("#Profile_Info_Detail_Input").value,
@@ -82,7 +94,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	let doc = parent.document;
 
-	DOM("#Profile_Info_Btns_Apply").addEventListener("click", () => {
+	DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Profile_ChangeNotify").showModal();
 	});
 

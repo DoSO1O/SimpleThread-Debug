@@ -38,14 +38,14 @@
 		<Div Class = "mdl-grid">
 			<Div ID = "Threadlist" Class = "mdl-cell mdl-cell--2-offset mdl-cell--8-col mdl-shadow--4dp mdl-color--white mdl-color-text--grey-800 mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 				<Div ID = "Threadlist_Tab" Class = "mdl-tabs__tab-bar">
-					<A ID = "Threadlist_Tab_Search" Class = "mdl-tabs__tab is-active" Href = "#Threadlist_Search">スレッド検索</A>
-					<A ID = "Threadlist_Tab_Admin" Class = "mdl-tabs__tab" Href = "#Threadlist_Admin">管理中のスレッド</A>
+					<A ID = "Threadlist_Tab_Search" Class = "mdl-tabs__tab is-active" Href = "#Threadlist_Search" Data-Locales = "thread.searchPanel">スレッド検索</A>
+					<A ID = "Threadlist_Tab_Admin" Class = "mdl-tabs__tab" Href = "#Threadlist_Admin" Data-Locales = "thread.adminPanel">管理中のスレッド</A>
 
 					<A ID = "Threadlist_Tab_Reload" Class = "mdl-tabs__tab">
 						<I Class = "material-icons">refresh</I>
 					</A>
 
-					<Div Class = "mdl-tooltip" For = "Threadlist_Tab_Reload">Refresh thread list</Div>
+					<Div Class = "mdl-tooltip" For = "Threadlist_Tab_Reload" Data-Locales = "thread.refresh-hint">Refresh threadlist</Div>
 				</Div>
 
 
@@ -58,7 +58,7 @@
 
 						<Div ID = "Threadlist_Search_Searcher_Container" Class = "mdl-textfield mdl-js-textfield">
 							<Input ID = "Threadlist_Search_Searcher_Container_Input" Class = "mdl-textfield__input" Type = "Search" />
-							<Label ID = "Threadlist_Search_Searcher_Container_Label" Class = "mdl-textfield__label" For = "Threadlist_Search_Searcher_Container_Input">Search...</Label>
+							<Label ID = "Threadlist_Search_Searcher_Container_Label" Class = "mdl-textfield__label" For = "Threadlist_Search_Searcher_Container_Input" Data-Locales = "thread.searcher">Search...</Label>
 						</Div>
 					</Div>
 				</Div>
@@ -67,7 +67,7 @@
 					<A ID = "Threadlist_Admin_Create" Class = "mdl-list__item">
 						<Span Class = "mdl-list__item-primary-content">
 							<I Class = "mdl-list__item-avatar material-icons">add</I>
-							<Span>スレッドを作成</Span>
+							<Span Data-Locales = "thread.create">スレッドを作成</Span>
 						</Span>
 					</A>
 				</Div>
