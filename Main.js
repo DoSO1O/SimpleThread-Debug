@@ -1,11 +1,4 @@
-window.base = new FirebasePlus({
-	apiKey: atob("QUl6YVN5QTYydVBrTjZXTlY0MW9XV3pPZGlJVE1iQkY5UkRZT2hN"),
-	authDomain: "simple-thread.firebaseapp.com",
-	databaseURL: "https://simple-thread.firebaseio.com",
-	projectId: "simple-thread",
-	storageBucket: "simple-thread.appspot.com",
-	messagingSenderId: atob("NjQ2NTI3MzA2ODAz")
-}, (user) => {
+window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) => {
 	if (user) {
 		DOM("#Header_SignInOut").dataset.locales = "main.signOut";
 
@@ -111,19 +104,4 @@ window.addEventListener("DOMContentLoaded", () => {
 				break;
 		}
 	});
-});
-
-Notification.requestPermission(function (state) {
-	/*switch (state) {
-		case "default":
-			break;
-			
-		case "granted":
-			console.info("通知の許可が確認されました");
-			break;
-			
-		case "denied":
-			console.warn("通知の許可が確認されません");
-			break;
-	}*/
 });
