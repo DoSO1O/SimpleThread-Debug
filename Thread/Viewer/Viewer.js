@@ -1,28 +1,32 @@
 window.addEventListener("DOMContentLoaded", () => {
-	if (!base.user) {
-		DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
-	}
-
 	let querys = location.querySort();
 
 	if (!querys.TID) {
 		location.href = "/SimpleThread-Debug/Error/406/";
 	}
+
+	if (!base.user) {
+		DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
+	}
+
+
 	
 	let doc = parent.document;
+		doc.querySelector("#Dialogs_Thread_PasswordConfirmer_Link").value = location.href;
 		doc.querySelector("#Dialogs_Thread_InfoViewer_TID").value = querys.TID;
 		doc.querySelector("#Dialogs_Thread_Poster_TID").value = querys.TID;
 
-	base.Database.get(base.Database.ONCE, "users", (res) => {
-		for (let uid in res) {
-			let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
-			
-			document.head.appendChild(photoStyle);
+	base.Database.get(base.Database.ONCE, "threads/" + querys.TID, (res) => {
+		doc.querySelector("#Header_Title").textContent = `${res.title}`;
+
+		if (res.password) {
+			doc.querySelector("#Dialogs_Thread_PasswordConfirmer_Password").value = res.password;
+			doc.querySelector("#Dialogs_Thread_PasswordConfirmer").showModal();
 		}
 	});
 
-	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID, (res) => {
-		doc.querySelector("#Header_Title").textContent = `${res.title}`;
+	base.Database.get(base.Database.ONCE, "users", (res) => {
+		for (let uid in res) document.head.appendChild(new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto));
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID + "/data", (res) => {
@@ -49,13 +53,6 @@ window.addEventListener("DOMContentLoaded", () => {
 					
 				base.Database.get(base.Database.ONCE, "users/" + resForIncrease[i].uid, (userRes) => {
 					post.querySelector('Span[UUID="Thread_Post_Header_Actor"]').textContent = userRes.userName;
-
-					/*let notify = new Notification(userRes.userName, {
-						body: post.querySelector('Div[UUID="Thread_Post_Content"]').textContent,
-						icon: userRes.gplusPhoto
-					}); notify.addEventListener("click", (res) => {
-						res.currentTarget.close();
-					});*/
 				});
 
 				URL.filter(post.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {

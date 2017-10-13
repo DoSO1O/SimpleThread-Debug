@@ -128,6 +128,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
+	DOM("#Dialogs_Thread_PasswordConfirmer_Btns_OK").addEventListener("click", (event) => {
+		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
+			if (DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password_Input").value == DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
+				//DOM("$IFrame.mdl-layout__content").src = DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
+			} else {
+				DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
+			}
+		}
+	});
+
+	DOM("#Dialogs_Thread_PasswordConfirmer_Btns_Cancel").addEventListener("click", (event) => {
+		DOM("$IFrame.mdl-layout__content").src = "/SimpleThread-Debug/Thread/";
+	});
+
+
+
 	watchers["Dialogs_Thread_InfoViewer_TID"] = {
 		valueObj: { value: "0" },
 		watcher: null

@@ -113,7 +113,7 @@
 
 			<Div ID = "Dialogs_Profile">
 				<Dialog ID = "Dialogs_Profile_ChangeNotify" Class = "mdl-dialog">
-					<Div ID = "Dialogs_Profile_ChangeNotify_Content" Class = "mdl-dialog__content">
+					<Div ID = "Dialogs_Profile_ChangeNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.profile.changeNotify">
 						プロフィールが変更されました。
 					</Div>
 
@@ -189,6 +189,30 @@
 						<Button ID = "Dialogs_Thread_InfoInputer_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.infoInputer.submit">作成</Button>
 						<Button ID = "Dialogs_Thread_InfoInputer_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
 					</Div>
+				</Dialog>
+
+				<Dialog ID = "Dialogs_Thread_PasswordConfirmer" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_PasswordConfirmer_Content" Class = "mdl-dialog__content">
+						<Div Data-Locales = "dialog.thread.passwordConfirmer">
+							このスレッドはパスワードで保護されています。
+							閲覧にはパスワードが必要です。
+						</Div>
+
+						<Div ID = "Dialogs_Thread_PasswordConfirmer_Content_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<Input ID = "Dialogs_Thread_PasswordConfirmer_Content_Password_Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_PasswordConfirmer_Content_Password_Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Password_Input" Data-Locales = "dialog.thread.passwordConfirmer.password">パスワード...*</Label>
+
+							<Span Class = "mdl-textfield__error" Data-Locales = "dialog.thread.passwordConfirmer.password-error">パスワードが間違っています</Span>
+						</Div>
+					</Div>
+
+					<Div ID = "Dialogs_Thread_PasswordConfirmer_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_PasswordConfirmer_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.passwordConfirmer.submit">確認</Button>
+						<Button ID = "Dialogs_Thread_PasswordConfirmer_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
+					</Div>
+
+					<Input ID = "Dialogs_Thread_PasswordConfirmer_Link" Type = "Hidden" Value = "" />
+					<Input ID = "Dialogs_Thread_PasswordConfirmer_Password" Type = "Hidden" Value = "" />
 				</Dialog>
 
 				<Dialog ID = "Dialogs_Thread_InfoViewer" Class = "mdl-dialog">

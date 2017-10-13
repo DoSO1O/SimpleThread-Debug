@@ -41,7 +41,11 @@ class Components {
 
 			Threadlist: {
 				ROOT: '#Threadlist',
-				THREAD: '[UUID="Threadlist_Thread"]'
+
+				THREAD: {
+					ROOT: '[UUID="Threadlist_Thread"]',
+					SECURED: '[UUID="Threadlist_Thread-Secured"]'
+				}
 			},
 
 			Thread: {
@@ -119,11 +123,11 @@ class Components {
 	static get Threadlist () {
 		return {
 			Thread: (() => {
-				function Thread (tid, title) {
+				function Thread (tid, title, isSecured) {
 					try {
 						if (!this.constructor) throw new TypeError("Please use the 'new' operator, the component can't be called as a function.");
 
-						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Threadlist.THREAD}`), true);
+						let component = document.importNode(Components.componentsDoc.querySelector(!isSecured ? `*${Components.componentIds.Threadlist.THREAD.ROOT}` : `*${Components.componentIds.Threadlist.THREAD.SECURED}`), true);
 
 						let componentWrapper = DOM("ComponentWrapper");
 							componentWrapper.appendChild(component);
@@ -163,10 +167,6 @@ class Components {
 								[/\${content}/g, content || ""],
 								[/\${createdAt}/g, createdAt || ""]
 							]);
-
-							/*URL.filter(componentWrapper.firstElementChild.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {
-								post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML = post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
-							});*/
 
 						return componentWrapper.firstElementChild;
 					} catch (error) {}
