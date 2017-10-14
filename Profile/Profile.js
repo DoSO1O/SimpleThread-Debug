@@ -37,9 +37,9 @@ window.addEventListener("DOMContentLoaded", () => {
 		res.links = res.links || [];
 
 		DOM("#Profile_Info_Name").classList.add("is-dirty"),
-		DOM("#Profile_Info_Name_Input").value = res.userName;
+		DOM("#Profile_Info_Name-Input").value = res.userName;
 		DOM("#Profile_Info_Detail").classList.add("is-dirty"),
-		DOM("#Profile_Info_Detail_Input").value = res.detail;
+		DOM("#Profile_Info_Detail-Input").value = res.detail;
 
 		(() => {
 			let clientListLength = DOM("#Profile_Info_URL").dataset.listlength;
@@ -70,8 +70,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
 		base.Database.update("users/" + base.user.uid, {
-			userName: DOM("#Profile_Info_Name_Input").value,
-			detail: DOM("#Profile_Info_Detail_Input").value,
+			userName: DOM("#Profile_Info_Name-Input").value,
+			detail: DOM("#Profile_Info_Detail-Input").value,
 
 			links: (() => {
 				let links = [];

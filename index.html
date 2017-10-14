@@ -132,8 +132,8 @@
 						</Div>
 
 						<Div ID = "Dialogs_Profile_DeleteConfirmer_Content_Email" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Profile_DeleteConfirmer_Content_Email_Input" Class = "mdl-textfield__input" Type = "Email" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Profile_DeleteConfirmer_Content_Email_Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Email_Input" Data-Locales = "dialog.profile.deleteConfirmer.email">メールアドレス...*</Label>
+							<Input ID = "Dialogs_Profile_DeleteConfirmer_Content_Email-Input" Class = "mdl-textfield__input" Type = "Email" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Profile_DeleteConfirmer_Content_Email-Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Email-Input" Data-Locales = "dialog.profile.deleteConfirmer.email">メールアドレス...*</Label>
 
 							<Span Class = "mdl-textfield__error" Data-Locales = "dialog.profile.deleteConfirmer.email-error">無効なメールアドレスです</Span>
 						</Div>
@@ -170,19 +170,29 @@
 				<Dialog ID = "Dialogs_Thread_InfoInputer" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Thread_InfoInputer_Content" Class = "mdl-dialog__content">
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Name" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Name_Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Name_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Name_Input" Data-Locales = "dialog.thread.infoInputer.name">スレッド名...*</Label>
+							<Input ID = "Dialogs_Thread_InfoInputer_Content_Name-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputer_Content_Name-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Name-Input" Data-Locales = "dialog.thread.infoInputer.name">スレッド名...*</Label>
 						</Div>
 
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Overview" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Overview_Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Overview_Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Overview_Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
+							<Input ID = "Dialogs_Thread_InfoInputer_Content_Overview-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputer_Content_Overview-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Overview-Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
 						</Div>
 
 						<Div ID = "Dialogs_Thread_InfoInputer_Content_Detail" Class = "mdl-textfield mdl-js-textfield">
-							<Textarea ID = "Dialogs_Thread_InfoInputer_Content_Detail_Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
-							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail_Input" Data-Locales = "dialog.thread.infoInputer.detail">詳細...</Label>
+							<Textarea ID = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
+							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Data-Locales = "dialog.thread.infoInputer.detail">詳細...</Label>
 						</Div>
+						
+						<Label ID = "Dialogs_Thread_InfoInputer_Content_Secured" Class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" For = "Dialogs_Thread_InfoInputer_Content_Secured-Switch">
+							<Input ID = "Dialogs_Thread_InfoInputer_Content_Secured-Input" Class = "mdl-switch__input" Type = "Checkbox" />
+							<Span Class = "mdl-switch__label" Data-Locales = "dialog.thread.infoInputer.secured">保護</Span>
+
+							<Div ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<Input ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
+								<Label ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
+							</Div>
+						</Label>
 					</Div>
 
 					<Div ID = "Dialogs_Thread_InfoInputer_Btns" Class = "mdl-dialog__actions">
@@ -199,8 +209,8 @@
 						</Div>
 
 						<Div ID = "Dialogs_Thread_PasswordConfirmer_Content_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Thread_PasswordConfirmer_Content_Password_Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_PasswordConfirmer_Content_Password_Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Password_Input" Data-Locales = "dialog.thread.passwordConfirmer.password">パスワード...*</Label>
+							<Input ID = "Dialogs_Thread_PasswordConfirmer_Content_Password-Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_PasswordConfirmer_Content_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Profile_DeleteConfirmer_Content_Password-Input" Data-Locales = "dialog.thread.passwordConfirmer.password">パスワード...*</Label>
 
 							<Span Class = "mdl-textfield__error" Data-Locales = "dialog.thread.passwordConfirmer.password-error">パスワードが間違っています</Span>
 						</Div>
@@ -234,8 +244,8 @@
 				<Dialog ID = "Dialogs_Thread_Poster" Class = "mdl-dialog">
 					<Div ID = "Dialogs_Thread_Poster_Content" Class = "mdl-dialog__content">
 						<Div ID = "Dialogs_Thread_Poster_Content_Text" Class = "mdl-textfield mdl-js-textfield">
-							<Textarea ID = "Dialogs_Thread_Poster_Content_Text_Input" Class = "mdl-textfield__input" Rows = "15" MaxLength = "500" Required = "Required"></Textarea>
-							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_Content_Text_Input" Data-Locales = "dialog.thread.poster.text">最近の出来事を共有してみましょう</Label>
+							<Textarea ID = "Dialogs_Thread_Poster_Content_Text-Input" Class = "mdl-textfield__input" Rows = "15" MaxLength = "500" Required = "Required"></Textarea>
+							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_Content_Text-Input" Data-Locales = "dialog.thread.poster.text">最近の出来事を共有してみましょう</Label>
 						</Div>
 					</Div>
 

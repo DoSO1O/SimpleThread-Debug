@@ -28,20 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("@Div.Threadlist_Searcher").forEach((searcher) => {
-		let rnd = new DOM.Randomizer(DOM.Randomizer.TYPE.LEVEL3).generate(16);
-
-		searcher.id = "Threadlist_Searcher_" + rnd,
-		searcher.querySelector("Label.Threadlist_Searcher_Label").id = "Threadlist_Searcher_Label_" + rnd,
-		searcher.querySelector("Div.Threadlist_Searcher_Container").id = "Threadlist_Searcher_Container_" + rnd,
-		searcher.querySelector("Input.Threadlist_Searcher_Container_Input").id = "Threadlist_Searcher_Container_Input_" + rnd,
-		searcher.querySelector("Label.Threadlist_Searcher_Container_Label").id = "Threadlist_Searcher_Container_Label_" + rnd;
-
-		searcher.querySelector("Label.Threadlist_Searcher_Label").htmlFor = searcher.querySelector("Input.Threadlist_Searcher_Container_Input").id,
-		searcher.querySelector("Label.Threadlist_Searcher_Container_Label").htmlFor = searcher.querySelector("Input.Threadlist_Searcher_Container_Input").id;
-	});
-
-	DOM("#Threadlist_Search_Searcher_Container_Input").addEventListener("input", (event) => {
+	DOM("#Threadlist_Search_Searcher_Container-Input").addEventListener("input", (event) => {
 		let list = Array.from(DOM("#Threadlist_Search").children).splice(1);
 			list.forEach((thread) => {
 				if (thread.querySelector("Span:Not(.mdl-list__item-primary-content)").textContent.toLowerCase().indexOf(event.target.value.toLowerCase()) == -1) {
