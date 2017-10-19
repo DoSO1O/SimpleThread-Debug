@@ -2,7 +2,7 @@ Body {
 	Background: URL("/SimpleThread-Debug/assets/images/Back.jpg");
 }
 
-*.mdl-grid > *.mdl-cell {
+Main {
 	Padding: 4vmin;
 }
 

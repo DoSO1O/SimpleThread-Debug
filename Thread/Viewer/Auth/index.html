@@ -3,24 +3,21 @@
 <HTML>
 	<Head>
 		<Meta Charset = "UTF-8" />
-		<Title>Simple Thread == トップページ</Title>
+		<Title>Simple Thread == Authorization</Title>
 
 		<Link Rel = "StyleSheet" Href = "https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<Link Rel = "StyleSheet" Href = "https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
 		<Script Src = "https://code.getmdl.io/1.3.0/material.min.js" Defer = "Defer"></Script>
 		<Script Src = "https://genbuproject.github.io/Programs/MDL Extender/MDL Extender.js"></Script>
 		<Link Rel = "StyleSheet" Href = "https://genbuproject.github.io/Programs/MDL Extender/MDL Extender.css" />
-		
+
 		<Script Src = "https://genbuproject.github.io/Programs/DOM Extender/DOM Extender v3.0.js"></Script>
-		<Script Src = "https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></Script>
-		<Script Src = "https://genbuproject.github.io/Programs/FirebasePlus.js"></Script>
 		
 		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/Core.js"></Script>
 		<Link Rel = "StyleSheet" Href = "/SimpleThread-Debug/assets/libraries/includes/Core.css" />
-		<Script Src = "/SimpleThread-Debug/assets/libraries/includes/Components.js"></Script>
 
-		<Script Src = "Top.js"></Script>
-		<Link Rel = "StyleSheet" Href = "Top.css" />
+		<Script Src = "Auth.js"></Script>
+		<Link Rel = "StyleSheet" Href = "Auth.css" />
 
 		<Script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -34,16 +31,7 @@
 		</Script>
 	</Head>
 	
-	<Body>
-		<Div Class = "mdl-grid">
-			<Main ID = "Top">
-				<Img ID = "Top_Logo" Src = "/SimpleThread-Debug/assets/images/Logo.png" />
-
-				<P ID = "Top_Introduce" Data-Locales = "top.introduce">
-					Simple Threadへようこそ！
-					当サービスでは "Be Simple, Be Free" をモットーに、他サービスと比べ自由に話せるスレ板を提供しますΣd(´・ω・｀)
-				</P>
-			</Main>
-		</Div>
+	<Body Style = 'Background: URL("/SimpleThread-Debug/assets/images/Back.jpg")'>
+		
 	</Body>
 </HTML>
