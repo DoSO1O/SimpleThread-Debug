@@ -12,18 +12,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	
 	let doc = parent.document;
-		doc.querySelector("#Dialogs_Thread_PasswordConfirmer_Link").value = location.href;
 		doc.querySelector("#Dialogs_Thread_InfoViewer_TID").value = querys.TID;
 		doc.querySelector("#Dialogs_Thread_Poster_TID").value = querys.TID;
 
 	base.Database.get(base.Database.ONCE, "threads/" + querys.TID, (res) => {
 		doc.querySelector("#Header_Title").textContent = `${res.title}`;
 
-		if (res.password) {
-			doc.querySelector("IFrame.mdl-layout__content").src = "Thread/Viewer/Auth/";
-			
-			doc.querySelector("#Dialogs_Thread_PasswordConfirmer_Password").value = res.password;
-			doc.querySelector("#Dialogs_Thread_PasswordConfirmer").showModal();
+		if (res.password && res.password != Encrypter.encrypt(sessionStorage.getItem("com.GenbuProject.SimpleThread.currentPassword") || "")) {
+			doc.querySelector("#Dialogs_Thread_PasswordConfirmer_Link").value = location.href;
+
+			doc.querySelector("IFrame.mdl-layout__content").src = `Thread/Viewer/Auth/?tid=${querys.TID}`;
 		}
 	});
 

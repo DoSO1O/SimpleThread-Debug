@@ -102,9 +102,10 @@ class Components {
 
 										componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
 											[/\${urlTitle}/g, urlTitle || url || "Untitled"],
-											[/\${url}/g, url || ""],
-											[/\${urlOrigin}/g, new URL(url).origin || locaion.origin]
+											[/\${url}/g, url || ""]
 										]);
+
+										componentWrapper.querySelector('Img[UUID="Dialogs_Profile_InfoViewer_Content_Info_Links_Link_Icon"]').src = `${new URL(url).origin}/favicon.ico` || `${locaion.origin}/favicon.ico`;
 										
 									return componentWrapper.firstElementChild;
 								} catch (error) {}

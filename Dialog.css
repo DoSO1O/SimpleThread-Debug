@@ -6,6 +6,10 @@ Dialog[ID^="Dialogs"] Div.mdl-textfield {
 	Width: 100%;
 }
 
+*.mdl-switch__child-hide {
+	Display: None;
+}
+
 
 
 #Dialogs_Profile_InfoViewer_Content {

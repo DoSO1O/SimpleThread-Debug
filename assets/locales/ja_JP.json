@@ -15,6 +15,8 @@
 	"dialog.thread.infoInputer.name": "スレッド名...*",
 	"dialog.thread.infoInputer.overview": "概要...*",
 	"dialog.thread.infoInputer.detail": "詳細...",
+	"dialog.thread.infoInputer.secured": "保護",
+	"dialog.thread.infoInputer.password": "パスワード...",
 	"dialog.thread.infoInputer.submit": "作成",
 	"dialog.thread.passwordConfirmer": ["このスレッドはパスワードで保護されています。", "閲覧にはパスワードが必要です。"],
 	"dialog.thread.passwordConfirmer.password": "パスワード...*",

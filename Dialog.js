@@ -86,6 +86,74 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
+	DOM("@#Dialogs_Thread_InfoInputer *[Required]").forEach((input) => {
+		input.addEventListener("input", () => {
+			let result = true;
+
+			let list = [
+				DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"),
+				DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")
+			];
+
+			if (DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked) list.push(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input"));
+
+			list.forEach(requiredField => {
+				if (requiredField.value.replace(/\s/g, "").length == 0) {
+					result = false;
+					return;
+				}
+			});
+
+			if (result) {
+				DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+			} else {
+				DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+			}
+		});
+	});
+
+	DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").addEventListener("change", (event) => {
+		let result = true;
+
+		switch (event.target.checked) {
+			case true:
+				DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.remove("mdl-switch__child-hide");
+
+				[DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input")].forEach(requiredField => {
+					if (requiredField.value.replace(/\s/g, "").length == 0) {
+						result = false;
+						return;
+					}
+				});
+
+				if (result) {
+					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+				} else {
+					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+				}
+
+				break;
+
+			case false:
+				DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.add("mdl-switch__child-hide");
+
+				[DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")].forEach(requiredField => {
+					if (requiredField.value.replace(/\s/g, "").length == 0) {
+						result = false;
+						return;
+					}
+				});
+
+				if (result) {
+					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+				} else {
+					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+				}
+
+				break;
+		}
+	});
+
 	DOM("#Dialogs_Thread_InfoInputer_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
 			base.Database.transaction("threads", (res) => {
@@ -117,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						}
 					],
 
-					password: ""
+					password: Encrypter.encrypt(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value)
 				});
 				
 				DOM("#Dialogs_Thread_InfoInputer").close();
@@ -130,8 +198,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	DOM("#Dialogs_Thread_PasswordConfirmer_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			if (DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value == DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
-				//DOM("$IFrame.mdl-layout__content").src = DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
+			if (Encrypter.encrypt(DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value) == DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
+				sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPassword", DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value);
+				DOM("$IFrame.mdl-layout__content").src = DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
+
+				DOM("#Dialogs_Thread_PasswordConfirmer_Link").value = "",
+				DOM("#Dialogs_Thread_PasswordConfirmer_Password").value = "";
 			} else {
 				DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
 			}

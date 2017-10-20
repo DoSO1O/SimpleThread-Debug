@@ -19,7 +19,9 @@
 		<Script Src = "https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></Script>
 		<Script Src = "https://genbuproject.github.io/Programs/FirebasePlus.js"></Script>
 		<Script Src = "/SimpleThread-Debug/assets/libraries/classes/DBLoader.js"></Script>
+
 		<Script Src = "https://caligatio.github.io/jsSHA/sha.js"></Script>
+		<Script Src = "/SimpleThread-Debug/assets/libraries/classes/Encrypter.js"></Script>
 		
 		<Link Rel = "StyleSheet" Href = "https://fonts.googleapis.com/icon?family=Material+Icons" />
 		<Link Rel = "StyleSheet" Href = "https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
@@ -183,16 +185,18 @@
 							<Textarea ID = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
 							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Data-Locales = "dialog.thread.infoInputer.detail">詳細...</Label>
 						</Div>
+
+
 						
 						<Label ID = "Dialogs_Thread_InfoInputer_Content_Secured" Class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" For = "Dialogs_Thread_InfoInputer_Content_Secured-Input">
 							<Input ID = "Dialogs_Thread_InfoInputer_Content_Secured-Input" Class = "mdl-switch__input" Type = "Checkbox" />
 							<Span Class = "mdl-switch__label" Data-Locales = "dialog.thread.infoInputer.secured">保護</Span>
-
-							<Div ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<Input ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-								<Label ID = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
-							</Div>
 						</Label>
+
+						<Div ID = "Dialogs_Thread_InfoInputer_Content_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-switch__child-hide">
+							<Input ID = "Dialogs_Thread_InfoInputer_Content_Password-Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputer_Content_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Data-Locales = "dialog.thread.infoInputer.password">パスワード...</Label>
+						</Div>
 					</Div>
 
 					<Div ID = "Dialogs_Thread_InfoInputer_Btns" Class = "mdl-dialog__actions">
