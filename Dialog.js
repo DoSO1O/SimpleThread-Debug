@@ -185,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						}
 					],
 
-					password: Encrypter.encrypt(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value)
+					password: DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked ? Encrypter.encrypt(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value) : ""
 				});
 				
 				DOM("#Dialogs_Thread_InfoInputer").close();

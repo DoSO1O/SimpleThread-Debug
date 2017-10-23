@@ -49,21 +49,8 @@ Span[UUID="Thread_Post_Actions_Plus_Count"] {
 
 
 
-#FlowPanel {
-	Position: Fixed;
-	Left: 0;
-	Top: 0;
-
-	Width: 100%;
-	Height: 100%;
-
-	Z-Index: 1;
-}
-
-
-
 #FlowPanel_Btns {
-	Position: Absolute;
+	Position: Fixed;
 	Right: 0;
 	Bottom: 0;
 
@@ -71,6 +58,7 @@ Span[UUID="Thread_Post_Actions_Plus_Count"] {
 	Flex-Direction: Row-Reverse;
 
 	Padding: 5vh 4vw;
+	Z-Index: 100;
 }
 
 #FlowPanel_Btns *[Disabled] {
