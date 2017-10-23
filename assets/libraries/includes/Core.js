@@ -15,7 +15,11 @@ window.addEventListener("DOMContentLoaded", () => {
 	locales.apply(this);
 
 	DOM("@Main").forEach(elem => {
-		["mdl-cell", "mdl-cell--2-offset", "mdl-cell--8-col", "mdl-shadow--4dp", "mdl-color--white", "mdl-color-text--grey-800"].forEach(className => {
+		let classes = navigator.isMobile() ?
+			["mdl-cell", "mdl-cell--12-col", "mdl-shadow--4dp", "mdl-color--white", "mdl-color-text--grey-800"] :
+			["mdl-cell", "mdl-cell--2-offset", "mdl-cell--8-col", "mdl-shadow--4dp", "mdl-color--white", "mdl-color-text--grey-800"];
+
+		classes.forEach(className => {
 			elem.classList.add(className);
 		});
 	});
