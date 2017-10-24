@@ -1,7 +1,7 @@
 let csl = null;
 
 window.addEventListener("DOMContentLoaded", () => {
-	csl = new JSCFAD();
+	csl = new JSCFAD({});
 	csl.log(Base);
 	csl.log(Base.send);
 
