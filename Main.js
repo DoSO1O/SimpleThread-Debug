@@ -92,7 +92,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	DOM("#Header_SignInOut").addEventListener("click", () => {
 		switch (DOM("#Header_SignInOut").dataset.locales) {
 			case "main.signIn":
-				base.signInWithGoogle(["https://www.googleapis.com/auth/plus.login"]);
+				base.signInWithRedirect(base.SIGNINTYPE.GOOGLE, ["https://www.googleapis.com/auth/plus.login"]);
 				break;
 				
 			case "main.signOut":
