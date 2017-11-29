@@ -9,7 +9,7 @@ class Util {
 			});
 	
 			for (let i = 0; i < res.length; i++) {
-				let thread = new Components.Threadlist.Thread(res[i].tid, res[i].title, res[i].password);
+				let thread = new Component.Threadlist.Thread(res[i].tid, res[i].title, res[i].password);
 				
 				new DOM("#Threadlist_Search").appendChild(thread);
 				if (base.user) if (res[i].jobs.Owner.hasOwnProperty(base.user.uid)) new DOM("#Threadlist_Admin").appendChild(thread);

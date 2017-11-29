@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {
-		for (let uid in res) document.head.appendChild(new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto));
+		for (let uid in res) document.head.appendChild(new Component.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto));
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads/" + querys.TID + "/data", (res) => {
@@ -45,24 +45,24 @@ window.addEventListener("DOMContentLoaded", () => {
 		
 		if (new DOM("#Thread").children.length < resForIncrease.length) {
 			for (let i = new DOM("#Thread").children.length; i < resForIncrease.length; i++) {
-				let post = new Components.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString());
-					post.querySelector('A[UUID="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
+				let post = new Component.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString());
+					post.querySelector('A[Data-Component="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
 						doc.querySelector("#Dialogs_Profile_InfoViewer_UID").value = resForIncrease[i].uid;
 						doc.querySelector("#Dialogs_Profile_InfoViewer").showModal();
 					});
 					
 				base.Database.get(base.Database.ONCE, "users/" + resForIncrease[i].uid, (userRes) => {
-					post.querySelector('Span[UUID="Thread_Post_Header_Actor"]').textContent = userRes.userName;
+					post.querySelector('Span[Data-Component="Thread_Post_Header_Actor"]').textContent = userRes.userName;
 				});
 
-				URL.filter(post.querySelector('Div[UUID="Thread_Post_Content"]').textContent).forEach((urlString) => {
-					post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML = post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+				URL.filter(post.querySelector('Div[Data-Component="Thread_Post_Content"]').textContent).forEach((urlString) => {
+					post.querySelector('Div[Data-Component="Thread_Post_Content"]').innerHTML = post.querySelector('Div[Data-Component="Thread_Post_Content"]').innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
 				});
 
 				new DOM("#Thread").appendChild(post);
 			}
 		} else {
-			new DOM('@Div[UUID="Thread_Post"]').forEach((post) => {
+			new DOM('@Div[Data-Component="Thread_Post"]').forEach((post) => {
 				if (!resForDecrease[post.dataset.pid]) post.remove();
 			});
 		}

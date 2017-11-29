@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				
 				if (res.links) {
 					for (let i = 0; i < res.links.length; i++) {
-						let link = new Components.Dialogs.Profile.InfoViewer.Links.Link(res.links[i].name, res.links[i].url);
+						let link = new Component.Dialogs.Profile.InfoViewer.Links.Link(res.links[i].name, res.links[i].url);
 
 						new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").appendChild(link);
 					}

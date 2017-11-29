@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {
 		for (let uid in res) {
-			let photoStyle = new Components.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
+			let photoStyle = new Component.Styles.ProfilePhotoManager(uid, res[uid].gplusPhoto);
 			
 			document.head.appendChild(photoStyle);
 		}
