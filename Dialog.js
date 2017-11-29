@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-	let watchers = [];
+	let watchers = {};
 
 	new DOM('@Dialog').forEach((dialog) => {
 		dialogPolyfill.registerDialog(dialog);

@@ -1,4 +1,4 @@
-window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) => {
+window.base = new DBLoader("assets/firebase.json", (user) => {
 	if (user) {
 		new DOM("#Header_SignInOut").dataset.locales = "main.signOut";
 
@@ -83,8 +83,10 @@ window.locales = (() => {
 
 window.addEventListener("DOMContentLoaded", () => {
 	new DOM("$IFrame#Page").addEventListener("load", () => {
-		!new DOM("#Drawer") || new DOM("#Drawer").classList.remove("is-visible"),
-		!new DOM("$Div.mdl-layout__obfuscator") || new DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
+		try {
+			!new DOM("#Drawer") || new DOM("#Drawer").classList.remove("is-visible"),
+			!new DOM("$Div.mdl-layout__obfuscator") || new DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
+		} catch (error) {}
 
 		if (new DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") locales.applyToElement(new DOM("#Header_Title"));
 	});

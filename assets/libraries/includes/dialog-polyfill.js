@@ -438,7 +438,7 @@
     this.overlay.addEventListener('click', function(e) {
       this.forwardTab_ = undefined;
       e.stopPropagation();
-      checknew DOM([]);  // sanity-check DOM
+      checkDOM([]);  // sanity-check DOM
     }.bind(this));
 
     this.handleKey_ = this.handleKey_.bind(this);
@@ -462,7 +462,7 @@
             removed = removed.concat(c.querySelectorAll('dialog'));
           }
         });
-        removed.length && checknew DOM(removed);
+        removed.length && checkDOM(removed);
       });
     }
   };
@@ -637,21 +637,25 @@
     testForm.setAttribute('method', 'dialog');
     if (testForm.method !== 'dialog') {
       var methodDescriptor = Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, 'method');
-      var realGet = methodDescriptor.get;
-      methodDescriptor.get = function() {
-        if (isFormMethodDialog(this)) {
-          return 'dialog';
-        }
-        return realGet.call(this);
-      };
-      var realSet = methodDescriptor.set;
-      methodDescriptor.set = function(v) {
-        if (typeof v === 'string' && v.toLowerCase() === 'dialog') {
-          return this.setAttribute('method', v);
-        }
-        return realSet.call(this, v);
-      };
-      Object.defineProperty(HTMLFormElement.prototype, 'method', methodDescriptor);
+      if (methodDescriptor) {
+        // nb. Some older iOS and older PhantomJS fail to return the descriptor. Don't do anything
+        // and don't bother to update the element.
+        var realGet = methodDescriptor.get;
+        methodDescriptor.get = function() {
+          if (isFormMethodDialog(this)) {
+            return 'dialog';
+          }
+          return realGet.call(this);
+        };
+        var realSet = methodDescriptor.set;
+        methodDescriptor.set = function(v) {
+          if (typeof v === 'string' && v.toLowerCase() === 'dialog') {
+            return this.setAttribute('method', v);
+          }
+          return realSet.call(this, v);
+        };
+        Object.defineProperty(HTMLFormElement.prototype, 'method', methodDescriptor);
+      }
     }
 
     /**
