@@ -41,6 +41,8 @@
 	"thread.searcher": "Search...",
 	"thread.create": "Create new one...",
 
+	"post.delete": "Delete",
+
 	"serverInfo.name": "Name",
 	"serverInfo.value": "Value",
 	"serverInfo.name.serviceName": "Service Name",

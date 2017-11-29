@@ -41,6 +41,8 @@
 	"thread.searcher": "Search...",
 	"thread.create": "新規スレッドを作成...",
 
+	"post.delete": "投稿を削除",
+
 	"serverInfo.name": "項目",
 	"serverInfo.value": "値",
 	"serverInfo.name.serviceName": "サービス名称",

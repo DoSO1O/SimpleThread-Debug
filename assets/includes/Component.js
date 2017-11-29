@@ -115,14 +115,23 @@ class Component {
 				static get UUIDS () {
 					return {
 						ROOT: 'Thread_Post',
-						MINE: 'Thread_Post-Mine'
+						MINE: 'Thread_Post-Mine',
+
+						MENU: {
+							ROOT: 'Thread_Post_Header_Menu',
+							DELETE: 'Thread_Post_Header_Menu_MenuItem-Delete'
+						}
 					}
 				}
 
 
 
-				constructor (pid = "", uid = "", userName = "", content = "", createdAt = new Date(), isMine = false) {
-					return new Component(!isMine ? Post.UUIDS.ROOT : Post.UUIDS.MINE, pid, uid, userName, content, createdAt);
+				constructor (pid = "", uid = "", userName = "", content = "", createdAt = new Date().toLocaleString(), isMine = false) {
+					let self = new Component(!isMine ? Post.UUIDS.ROOT : Post.UUIDS.MINE, pid, uid, userName, content, createdAt, new DOM.Randomizer().generate(16));
+						self.pid = pid,
+						self.uid = uid;
+
+					return self;
 				}
 			}
 		}

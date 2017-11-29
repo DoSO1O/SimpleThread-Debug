@@ -45,13 +45,23 @@ window.addEventListener("DOMContentLoaded", () => {
 		
 		if (new DOM("#Thread").children.length < resForIncrease.length) {
 			for (let i = new DOM("#Thread").children.length; i < resForIncrease.length; i++) {
-				let post = new Component.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString());
+				let post = new Component.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString(), base.user.uid == resForIncrease[i].uid);
 					post.querySelector('A[Data-Component="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
-						doc.querySelector("#Dialogs_Profile_InfoViewer_UID").value = resForIncrease[i].uid;
+						doc.querySelector("#Dialogs_Profile_InfoViewer_UID").value = post.uid;
 						doc.querySelector("#Dialogs_Profile_InfoViewer").showModal();
 					});
+
+					if (post.querySelector(`UL[Data-Component="${Component.Thread.Post.UUIDS.MENU.ROOT}"]`)) {
+						setTimeout(() => {
+							componentHandler.upgradeElement(post.querySelector(`UL[Data-Component="${Component.Thread.Post.UUIDS.MENU.ROOT}"]`));
+						}, 100);
+
+						post.querySelector(`Li[Data-Component="${Component.Thread.Post.UUIDS.MENU.DELETE}"]`).addEventListener("click", () => {
+							base.Database.delete(`threads/${querys.TID}/data/${post.pid}/`);
+						});
+					}
 					
-				base.Database.get(base.Database.ONCE, "users/" + resForIncrease[i].uid, (userRes) => {
+				base.Database.get(base.Database.ONCE, "users/" + post.uid, (userRes) => {
 					post.querySelector('Span[Data-Component="Thread_Post_Header_Actor"]').textContent = userRes.userName;
 				});
 
@@ -63,6 +73,10 @@ window.addEventListener("DOMContentLoaded", () => {
 			}
 		} else {
 			new DOM('@Div[Data-Component="Thread_Post"]').forEach((post) => {
+				if (!resForDecrease[post.dataset.pid]) post.remove();
+			});
+
+			new DOM('@Div[Data-Component="Thread_Post-Mine"]').forEach((post) => {
 				if (!resForDecrease[post.dataset.pid]) post.remove();
 			});
 		}

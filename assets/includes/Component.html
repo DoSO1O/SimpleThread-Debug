@@ -55,7 +55,13 @@
 
 			<Span Data-Component = "Thread_Post_Header_CreatedAt">${4}</Span>
 
-			<Button ID = "${}"></Button>
+			<Button ID = "Thread_Post_Header_MenuBtn--${5}" Class = "mdl-button mdl-js-button mdl-button--icon">
+				<I Class = "material-icons">more_vert</I>
+			</Button>
+
+			<UL Data-Component = "Thread_Post_Header_Menu" Class = "mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" For = "Thread_Post_Header_MenuBtn--${5}">
+				<Li Data-Component = "Thread_Post_Header_Menu_MenuItem-Delete" Class = "mdl-menu__item" Data-Locales = "post.delete">投稿を削除</Li>
+			</UL>
 		</Div>
 
 		<Div Data-Component = "Thread_Post_Content" Class = "mdl-card__supporting-text">${3}</Div>
