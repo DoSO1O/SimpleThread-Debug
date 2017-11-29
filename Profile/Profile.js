@@ -11,16 +11,16 @@ terminal.addEventListener("message", (event) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-	DOM("#Profile_Photo").dataset.uid = base.user.uid;
+	new DOM("#Profile_Photo").dataset.uid = base.user.uid;
 
-	DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content').dataset.locales = "profile.url";
-	locales.applyToElement(DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content'));
+	new DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content').dataset.locales = "profile.url";
+	locales.applyToElement(new DOM("#Profile_Info_URL").childNodes[0].querySelector('Span.mdl-list__item-primary-content'));
 
-	DOM("#Profile_Info_URL_Add").addEventListener("click", () => {
-		DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label').dataset.locales = "profile.url.title",
-		DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label').dataset.locales = "profile.url.value";
-		locales.applyToElement(DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label')),
-		locales.applyToElement(DOM("#Profile_Info_URL").childNodes[DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label'));
+	new DOM("#Profile_Info_URL_Add").addEventListener("click", () => {
+		new DOM("#Profile_Info_URL").childNodes[new DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label').dataset.locales = "profile.url.title",
+		new DOM("#Profile_Info_URL").childNodes[new DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label').dataset.locales = "profile.url.value";
+		locales.applyToElement(new DOM("#Profile_Info_URL").childNodes[new DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(1) > Label')),
+		locales.applyToElement(new DOM("#Profile_Info_URL").childNodes[new DOM("#Profile_Info_URL").childNodes.length - 1].querySelector('Span.mdl-list__item-primary-content > *:nth-Child(2) > Label'));
 	});
 
 	
@@ -36,26 +36,26 @@ window.addEventListener("DOMContentLoaded", () => {
 	base.Database.get(base.Database.INTERVAL, "users/" + base.user.uid, (res) => {
 		res.links = res.links || [];
 
-		DOM("#Profile_Info_Name").classList.add("is-dirty"),
-		DOM("#Profile_Info_Name-Input").value = res.userName;
-		DOM("#Profile_Info_Detail").classList.add("is-dirty"),
-		DOM("#Profile_Info_Detail-Input").value = res.detail;
+		new DOM("#Profile_Info_Name").classList.add("is-dirty"),
+		new DOM("#Profile_Info_Name-Input").value = res.userName;
+		new DOM("#Profile_Info_Detail").classList.add("is-dirty"),
+		new DOM("#Profile_Info_Detail-Input").value = res.detail;
 
 		(() => {
-			let clientListLength = DOM("#Profile_Info_URL").dataset.listlength;
+			let clientListLength = new DOM("#Profile_Info_URL").dataset.listlength;
 
 			if (res.links.length - clientListLength > 0) {
 				for (let i = 0; i < res.links.length - clientListLength; i++) {
-					DOM("#Profile_Info_URL_Add").click();
+					new DOM("#Profile_Info_URL_Add").click();
 				}
 			} else {
 				for (let i = 0; i < clientListLength - res.links.length; i++) {
-					DOM("#Profile_Info_URL").children[0].querySelector('Button[ID*="Remove"]').click();
+					new DOM("#Profile_Info_URL").children[0].querySelector('Button[ID*="Remove"]').click();
 				}
 			}
 
 			for (let i = 0; i < res.links.length; i++) {
-				let currentList = DOM("#Profile_Info_URL").querySelector('Li[Data-ItemID="' + i + '"]');
+				let currentList = new DOM("#Profile_Info_URL").querySelector('Li[Data-ItemID="' + i + '"]');
 					currentList.querySelectorAll("Div").forEach((container) => {
 						container.classList.add("is-dirty");
 					});
@@ -68,16 +68,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
+	new DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
 		base.Database.update("users/" + base.user.uid, {
-			userName: DOM("#Profile_Info_Name-Input").value,
-			detail: DOM("#Profile_Info_Detail-Input").value,
+			userName: new DOM("#Profile_Info_Name-Input").value,
+			detail: new DOM("#Profile_Info_Detail-Input").value,
 
 			links: (() => {
 				let links = [];
 
-				for (let i = 0; i < DOM("#Profile_Info_URL").dataset.listlength; i++) {
-					let currentList = DOM("#Profile_Info_URL").querySelector('Li[Data-ItemID="' + i + '"]');
+				for (let i = 0; i < new DOM("#Profile_Info_URL").dataset.listlength; i++) {
+					let currentList = new DOM("#Profile_Info_URL").querySelector('Li[Data-ItemID="' + i + '"]');
 
 					links.push({
 						name: currentList.querySelector('Input[Data-FieldID="0"]').value,
@@ -94,11 +94,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	let doc = parent.document;
 
-	DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
+	new DOM("#Profile_Info_Btns_Save").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Profile_ChangeNotify").showModal();
 	});
 
-	DOM("#Profile_Info_Btns_Delete").addEventListener("click", () => {
+	new DOM("#Profile_Info_Btns_Delete").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Profile_DeleteConfirmer").showModal();
 	});
 });

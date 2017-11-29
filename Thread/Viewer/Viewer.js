@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	if (!base.user) {
-		DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
+		new DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
 	}
 
 
@@ -43,8 +43,8 @@ window.addEventListener("DOMContentLoaded", () => {
 			post.pid = index;
 		});
 		
-		if (DOM("#Thread").children.length < resForIncrease.length) {
-			for (let i = DOM("#Thread").children.length; i < resForIncrease.length; i++) {
+		if (new DOM("#Thread").children.length < resForIncrease.length) {
+			for (let i = new DOM("#Thread").children.length; i < resForIncrease.length; i++) {
 				let post = new Components.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString());
 					post.querySelector('A[UUID="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
 						doc.querySelector("#Dialogs_Profile_InfoViewer_UID").value = resForIncrease[i].uid;
@@ -59,10 +59,10 @@ window.addEventListener("DOMContentLoaded", () => {
 					post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML = post.querySelector('Div[UUID="Thread_Post_Content"]').innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
 				});
 
-				DOM("#Thread").appendChild(post);
+				new DOM("#Thread").appendChild(post);
 			}
 		} else {
-			DOM('@Div[UUID="Thread_Post"]').forEach((post) => {
+			new DOM('@Div[UUID="Thread_Post"]').forEach((post) => {
 				if (!resForDecrease[post.dataset.pid]) post.remove();
 			});
 		}
@@ -70,13 +70,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("#FlowPanel_Btns_CreatePost").addEventListener("click", () => {
+	new DOM("#FlowPanel_Btns_CreatePost").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Thread_Poster").showModal();
 
-		DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
+		new DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
 	});
 
-	DOM("#FlowPanel_Btns_ShowThreadInfo").addEventListener("click", () => {
+	new DOM("#FlowPanel_Btns_ShowThreadInfo").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Thread_InfoViewer").showModal();
 	});
 });

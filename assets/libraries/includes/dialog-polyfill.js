@@ -438,7 +438,7 @@
     this.overlay.addEventListener('click', function(e) {
       this.forwardTab_ = undefined;
       e.stopPropagation();
-      checkDOM([]);  // sanity-check DOM
+      checknew DOM([]);  // sanity-check DOM
     }.bind(this));
 
     this.handleKey_ = this.handleKey_.bind(this);
@@ -462,7 +462,7 @@
             removed = removed.concat(c.querySelectorAll('dialog'));
           }
         });
-        removed.length && checkDOM(removed);
+        removed.length && checknew DOM(removed);
       });
     }
   };

@@ -14,7 +14,7 @@ try {
 window.addEventListener("DOMContentLoaded", () => {
 	locales.apply(this);
 
-	DOM("@Main").forEach(elem => {
+	new DOM("@Main").forEach(elem => {
 		let classes = navigator.isMobile() ?
 			["mdl-cell", "mdl-cell--12-col", "mdl-shadow--4dp", "mdl-color--white", "mdl-color-text--grey-800"] :
 			["mdl-cell", "mdl-cell--2-offset", "mdl-cell--8-col", "mdl-shadow--4dp", "mdl-color--white", "mdl-color-text--grey-800"];
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 	
-	DOM('@A[Href]:Not([Target]):Not([Href^="javascript:"])').forEach((elem) => {
+	new DOM('@A[Href]:Not([Target]):Not([Href^="javascript:"])').forEach((elem) => {
 		elem.addEventListener("click", (event) => {
 			event.preventDefault();
 

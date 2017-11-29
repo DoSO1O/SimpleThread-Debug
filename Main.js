@@ -1,9 +1,9 @@
 window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) => {
 	if (user) {
-		DOM("#Header_SignInOut").dataset.locales = "main.signOut";
+		new DOM("#Header_SignInOut").dataset.locales = "main.signOut";
 
 		base.Database.getInfo(base.Database.ONCE, "users/" + user.uid, (res) => {
-			DOM('@A[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
+			new DOM('@A[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
 				btn.dataset.uid = base.user.uid;
 			});
 
@@ -16,7 +16,7 @@ window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) =>
 					links: []
 				});
 
-				DOM("#Dialogs_Account_CreateNotify").showModal();
+				new DOM("#Dialogs_Account_CreateNotify").showModal();
 			} else {
 				base.Database.update("users/" + user.uid, {
 					gplusName: user.providerData[0].displayName,
@@ -26,13 +26,13 @@ window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) =>
 		});
 	} else {
 		window.addEventListener("DOMContentLoaded", () => {
-			DOM('@*[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
+			new DOM('@*[UUID="ProfilePhoto-Btn"]').forEach((btn) => {
 				btn.setAttribute("Disabled", "");
 			});
 		});
 	}
 
-	locales.applyToElement(DOM("#Header_SignInOut"));
+	locales.applyToElement(new DOM("#Header_SignInOut"));
 
 	base.Database.get(base.Database.ONCE, "users", (res) => {
 		for (let uid in res) {
@@ -47,7 +47,7 @@ window.base = new DBLoader("/SimpleThread-Debug/assets/firebase.json", (user) =>
 	let querys = location.querySort();
 
 	if (querys.TID) {
-		DOM("$IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + querys.TID;
+		new DOM("$IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + querys.TID;
 	}
 });
 
@@ -82,15 +82,15 @@ window.locales = (() => {
 
 
 window.addEventListener("DOMContentLoaded", () => {
-	DOM("$IFrame#Page").addEventListener("load", () => {
-		!DOM("#Drawer") || DOM("#Drawer").classList.remove("is-visible"),
-		!DOM("$Div.mdl-layout__obfuscator") || DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
+	new DOM("$IFrame#Page").addEventListener("load", () => {
+		!new DOM("#Drawer") || new DOM("#Drawer").classList.remove("is-visible"),
+		!new DOM("$Div.mdl-layout__obfuscator") || new DOM("$Div.mdl-layout__obfuscator").classList.remove("is-visible");
 
-		if (DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") locales.applyToElement(DOM("#Header_Title"));
+		if (new DOM("$IFrame#Page").contentWindow.location.pathname != "/SimpleThread-Debug/Thread/Viewer/") locales.applyToElement(new DOM("#Header_Title"));
 	});
 
-	DOM("#Header_SignInOut").addEventListener("click", () => {
-		switch (DOM("#Header_SignInOut").dataset.locales) {
+	new DOM("#Header_SignInOut").addEventListener("click", () => {
+		switch (new DOM("#Header_SignInOut").dataset.locales) {
 			case "main.signIn":
 				base.signInWithRedirect(base.SIGNINTYPE.GOOGLE, ["https://www.googleapis.com/auth/plus.login"]);
 				break;

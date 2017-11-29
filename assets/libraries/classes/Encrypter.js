@@ -1,8 +1,4 @@
 class Encrypter {
-	constructor () { }
-
-	
-
 	/**
 	 * 文字列をHash(SHA-512)で暗号化する
 	 * @memberof Encrypter

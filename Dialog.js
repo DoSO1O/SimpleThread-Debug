@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
 	let watchers = [];
 
-	DOM('@Dialog').forEach((dialog) => {
+	new DOM('@Dialog').forEach((dialog) => {
 		dialogPolyfill.registerDialog(dialog);
 
 		if (dialog.querySelector('Button[Data-Action="Dialog_Submit"]')) {
@@ -38,20 +38,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 	
-	DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").addEventListener("input", () => {
-		if (DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
-			DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.remove("mdl-button--disabled");
+	new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").addEventListener("input", () => {
+		if (new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
+			new DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.remove("mdl-button--disabled");
 		} else {
-			DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.add("mdl-button--disabled");
+			new DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").classList.add("mdl-button--disabled");
 		}
 	});
 
-	DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").addEventListener("click", (event) => {
+	new DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			if (DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
+			if (new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
 				base.delete();
 			} else {
-				DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email").classList.add("is-invalid");
+				new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email").classList.add("is-invalid");
 			}
 		}
 	});
@@ -63,21 +63,21 @@ window.addEventListener("DOMContentLoaded", () => {
 		watcher: null
 	}; watchers["Dialogs_Profile_InfoViewer_UID"].watcher = new DOM.Watcher({
 		target: watchers["Dialogs_Profile_InfoViewer_UID"].valueObj,
-		onGet: () => { watchers["Dialogs_Profile_InfoViewer_UID"].valueObj.value = DOM("#Dialogs_Profile_InfoViewer_UID").value },
+		onGet: () => { watchers["Dialogs_Profile_InfoViewer_UID"].valueObj.value = new DOM("#Dialogs_Profile_InfoViewer_UID").value },
 
 		onChange: (watcher) => {
 			base.Database.get(base.Database.ONCE, `users/${watcher.newValue}`, (res) => {
-				DOM("#Dialogs_Profile_InfoViewer_Content_Photo").dataset.uid = watcher.newValue,
-				DOM("#Dialogs_Profile_InfoViewer_Content_Info_Name").textContent = res.userName,
-				DOM("#Dialogs_Profile_InfoViewer_Content_Info_Detail").textContent = res.detail;
+				new DOM("#Dialogs_Profile_InfoViewer_Content_Photo").dataset.uid = watcher.newValue,
+				new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Name").textContent = res.userName,
+				new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Detail").textContent = res.detail;
 
-				while (DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").childNodes.length > 0) DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").childNodes[0].remove();
+				while (new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").childNodes.length > 0) new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").childNodes[0].remove();
 				
 				if (res.links) {
 					for (let i = 0; i < res.links.length; i++) {
 						let link = new Components.Dialogs.Profile.InfoViewer.Links.Link(res.links[i].name, res.links[i].url);
 
-						DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").appendChild(link);
+						new DOM("#Dialogs_Profile_InfoViewer_Content_Info_Links").appendChild(link);
 					}
 				}
 			});
@@ -86,16 +86,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("@#Dialogs_Thread_InfoInputer *[Required]").forEach((input) => {
+	new DOM("@#Dialogs_Thread_InfoInputer *[Required]").forEach((input) => {
 		input.addEventListener("input", () => {
 			let result = true;
 
 			let list = [
-				DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"),
-				DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")
+				new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"),
+				new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")
 			];
 
-			if (DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked) list.push(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input"));
+			if (new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked) list.push(new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input"));
 
 			list.forEach(requiredField => {
 				if (requiredField.value.replace(/\s/g, "").length == 0) {
@@ -105,21 +105,21 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 
 			if (result) {
-				DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+				new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
 			} else {
-				DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+				new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
 			}
 		});
 	});
 
-	DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").addEventListener("change", (event) => {
+	new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").addEventListener("change", (event) => {
 		let result = true;
 
 		switch (event.target.checked) {
 			case true:
-				DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.remove("mdl-switch__child-hide");
+				new DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.remove("mdl-switch__child-hide");
 
-				[DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input")].forEach(requiredField => {
+				[new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input")].forEach(requiredField => {
 					if (requiredField.value.replace(/\s/g, "").length == 0) {
 						result = false;
 						return;
@@ -127,17 +127,17 @@ window.addEventListener("DOMContentLoaded", () => {
 				});
 
 				if (result) {
-					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
 				} else {
-					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
 				}
 
 				break;
 
 			case false:
-				DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.add("mdl-switch__child-hide");
+				new DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.add("mdl-switch__child-hide");
 
-				[DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")].forEach(requiredField => {
+				[new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")].forEach(requiredField => {
 					if (requiredField.value.replace(/\s/g, "").length == 0) {
 						result = false;
 						return;
@@ -145,24 +145,24 @@ window.addEventListener("DOMContentLoaded", () => {
 				});
 
 				if (result) {
-					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
 				} else {
-					DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
 				}
 
 				break;
 		}
 	});
 
-	DOM("#Dialogs_Thread_InfoInputer_Btns_OK").addEventListener("click", (event) => {
+	new DOM("#Dialogs_Thread_InfoInputer_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
 			base.Database.transaction("threads", (res) => {
 				let now = new Date().getTime();
 
 				base.Database.set("threads/" + res.length, {
-					title: DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
-					overview: DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input").value,
-					detail: DOM("#Dialogs_Thread_InfoInputer_Content_Detail-Input").value,
+					title: new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
+					overview: new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input").value,
+					detail: new DOM("#Dialogs_Thread_InfoInputer_Content_Detail-Input").value,
 
 					jobs: {
 						Owner: (() => {
@@ -180,15 +180,15 @@ window.addEventListener("DOMContentLoaded", () => {
 					data: [
 						{
 							uid: base.user.uid,
-							content: DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
+							content: new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
 							createdAt: now
 						}
 					],
 
-					password: DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked ? Encrypter.encrypt(DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value) : ""
+					password: new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value) : ""
 				});
 				
-				DOM("#Dialogs_Thread_InfoInputer").close();
+				new DOM("#Dialogs_Thread_InfoInputer").close();
 				parent.document.querySelector("IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + res.length;
 			});
 		}
@@ -196,22 +196,22 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	DOM("#Dialogs_Thread_PasswordConfirmer_Btns_OK").addEventListener("click", (event) => {
+	new DOM("#Dialogs_Thread_PasswordConfirmer_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			if (Encrypter.encrypt(DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value) == DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
-				sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPassword", DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value);
-				DOM("$IFrame.mdl-layout__content").src = DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
+			if (Encrypter.encrypt(new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value) == new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
+				sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPassword", new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value);
+				new DOM("$IFrame.mdl-layout__content").src = new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
 
-				DOM("#Dialogs_Thread_PasswordConfirmer_Link").value = "",
-				DOM("#Dialogs_Thread_PasswordConfirmer_Password").value = "";
+				new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value = "",
+				new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value = "";
 			} else {
-				DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
+				new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
 			}
 		}
 	});
 
-	DOM("#Dialogs_Thread_PasswordConfirmer_Btns_Cancel").addEventListener("click", (event) => {
-		DOM("$IFrame.mdl-layout__content").src = "/SimpleThread-Debug/Thread/";
+	new DOM("#Dialogs_Thread_PasswordConfirmer_Btns_Cancel").addEventListener("click", (event) => {
+		new DOM("$IFrame.mdl-layout__content").src = "/SimpleThread-Debug/Thread/";
 	});
 
 
@@ -221,20 +221,20 @@ window.addEventListener("DOMContentLoaded", () => {
 		watcher: null
 	}; watchers["Dialogs_Thread_InfoViewer_TID"].watcher = new DOM.Watcher({
 		target: watchers["Dialogs_Thread_InfoViewer_TID"].valueObj,
-		onGet: () => { watchers["Dialogs_Thread_InfoViewer_TID"].valueObj.value = DOM("#Dialogs_Thread_InfoViewer_TID").value },
+		onGet: () => { watchers["Dialogs_Thread_InfoViewer_TID"].valueObj.value = new DOM("#Dialogs_Thread_InfoViewer_TID").value },
 
 		onChange: (watcher) => {
 			base.Database.get(base.Database.ONCE, `threads/${watcher.newValue}`, (res) => {
-				DOM("#Dialogs_Thread_InfoViewer_Content_Name").textContent = res.title,
-				DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent = res.overview,
-				DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent = res.detail;
+				new DOM("#Dialogs_Thread_InfoViewer_Content_Name").textContent = res.title,
+				new DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent = res.overview,
+				new DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent = res.detail;
 
-				URL.filter(DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent).forEach((urlString) => {
-					DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML = DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+				URL.filter(new DOM("#Dialogs_Thread_InfoViewer_Content_Overview").textContent).forEach((urlString) => {
+					new DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML = new DOM("#Dialogs_Thread_InfoViewer_Content_Overview").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
 				});
 	
-				URL.filter(DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent).forEach((urlString) => {
-					DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML = DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
+				URL.filter(new DOM("#Dialogs_Thread_InfoViewer_Content_Detail").textContent).forEach((urlString) => {
+					new DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML = new DOM("#Dialogs_Thread_InfoViewer_Content_Detail").innerHTML.replace(urlString, `<A Href = "${urlString}" Target = "_blank">${urlString}</A>`);
 				});
 			});
 		}
@@ -242,32 +242,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	
 
-	DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
+	new DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			base.Database.transaction("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
-				base.Database.set("threads/" + DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
+			base.Database.transaction("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
+				base.Database.set("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
 					uid: base.user.uid,
-					content: DOM("#Dialogs_Thread_Poster_Content_Text-Input").value,
+					content: new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value,
 					createdAt: new Date().getTime()
 				});
 
-				DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
-				DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
-				DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
+				new DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
+				new DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
+				new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
 				
-				DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
+				new DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 				
-				DOM("#Dialogs_Thread_Poster").close();
+				new DOM("#Dialogs_Thread_Poster").close();
 			});
 		}
 	});
 
-	DOM("#Dialogs_Thread_Poster_Btns_Cancel").addEventListener("click", () => {
-		DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
-		DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
-		DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
+	new DOM("#Dialogs_Thread_Poster_Btns_Cancel").addEventListener("click", () => {
+		new DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
+		new DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
+		new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
 
-		DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
+		new DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
 	});
 
 

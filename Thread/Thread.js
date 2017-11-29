@@ -11,8 +11,8 @@ class Util {
 			for (let i = 0; i < res.length; i++) {
 				let thread = new Components.Threadlist.Thread(res[i].tid, res[i].title, res[i].password);
 				
-				DOM("#Threadlist_Search").appendChild(thread);
-				if (base.user) if (res[i].jobs.Owner.hasOwnProperty(base.user.uid)) DOM("#Threadlist_Admin").appendChild(thread);
+				new DOM("#Threadlist_Search").appendChild(thread);
+				if (base.user) if (res[i].jobs.Owner.hasOwnProperty(base.user.uid)) new DOM("#Threadlist_Admin").appendChild(thread);
 			}
 		});
 	}
@@ -20,16 +20,16 @@ class Util {
 
 window.addEventListener("DOMContentLoaded", () => {
 	if (!base.user) {
-		DOM("$#Threadlist_Tab_Admin").setAttribute("Disabled", ""),
-		DOM("$#Threadlist_Admin").setAttribute("Disabled", "");
+		new DOM("$#Threadlist_Tab_Admin").setAttribute("Disabled", ""),
+		new DOM("$#Threadlist_Admin").setAttribute("Disabled", "");
 	}
 
 	Util.refreshThreadList();
 
 
 
-	DOM("#Threadlist_Search_Searcher_Container-Input").addEventListener("input", (event) => {
-		let list = Array.from(DOM("#Threadlist_Search").children).splice(1);
+	new DOM("#Threadlist_Search_Searcher_Container-Input").addEventListener("input", (event) => {
+		let list = Array.from(new DOM("#Threadlist_Search").children).splice(1);
 			list.forEach((thread) => {
 				if (thread.querySelector("Span:Not(.mdl-list__item-primary-content)").textContent.toLowerCase().indexOf(event.target.value.toLowerCase()) == -1) {
 					thread.setAttribute("Disabled", "");
@@ -39,9 +39,9 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 	});
 
-	DOM("#Threadlist_Tab_Reload").addEventListener("click", (event) => {
-		while (DOM("#Threadlist_Search").children.length > 1) DOM("#Threadlist_Search").children[1].remove();
-		while (DOM("#Threadlist_Admin").children.length > 1) DOM("#Threadlist_Admin").children[1].remove();
+	new DOM("#Threadlist_Tab_Reload").addEventListener("click", (event) => {
+		while (new DOM("#Threadlist_Search").children.length > 1) new DOM("#Threadlist_Search").children[1].remove();
+		while (new DOM("#Threadlist_Admin").children.length > 1) new DOM("#Threadlist_Admin").children[1].remove();
 
 		Util.refreshThreadList();
 	});
@@ -50,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	let doc = parent.document;
 
-	DOM("#Threadlist_Admin_Create").addEventListener("click", () => {
+	new DOM("#Threadlist_Admin_Create").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Thread_InfoInputer").showModal();
 	});
 });

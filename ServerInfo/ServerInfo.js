@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		for (let key in res) length++;
 
-		DOM("#ServerInfo_Users").textContent = length - 1;
+		new DOM("#ServerInfo_Users").textContent = length - 1;
 	});
 
 	base.Database.get(base.Database.INTERVAL, "threads", (res) => {
@@ -12,6 +12,6 @@ window.addEventListener("DOMContentLoaded", () => {
 			if (thread !== "!SYSTEM") return true;
 		});
 
-		DOM("#ServerInfo_Threads").textContent = res.length;
+		new DOM("#ServerInfo_Threads").textContent = res.length;
 	});
 });

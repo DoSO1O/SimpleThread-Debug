@@ -2,7 +2,7 @@ let doc = parent.document;
 
 class Components {
 	static get componentsDoc () {
-		let doc = DOM("Body");
+		let doc = new DOM("Body");
 
 		try {
 			doc.innerHTML = DOM.xhr({
@@ -66,7 +66,7 @@ class Components {
 						
 						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Styles.ProfilePhotoManager.ROOT}`), true);
 						
-						let componentWrapper = DOM("ComponentWrapper");
+						let componentWrapper = new DOM("ComponentWrapper");
 							componentWrapper.appendChild(component);
 
 							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
@@ -97,7 +97,7 @@ class Components {
 									
 									let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Dialogs.Profile.InfoViewer.LINKS.LINK}`), true);
 									
-									let componentWrapper = DOM("ComponentWrapper");
+									let componentWrapper = new DOM("ComponentWrapper");
 										componentWrapper.appendChild(component);
 
 										componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
@@ -130,7 +130,7 @@ class Components {
 
 						let component = document.importNode(Components.componentsDoc.querySelector(!isSecured ? `*${Components.componentIds.Threadlist.THREAD.ROOT}` : `*${Components.componentIds.Threadlist.THREAD.SECURED}`), true);
 
-						let componentWrapper = DOM("ComponentWrapper");
+						let componentWrapper = new DOM("ComponentWrapper");
 							componentWrapper.appendChild(component);
 
 							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
@@ -158,7 +158,7 @@ class Components {
 
 						let component = document.importNode(Components.componentsDoc.querySelector(`*${Components.componentIds.Thread.POST}`), true);
 
-						let componentWrapper = DOM("ComponentWrapper");
+						let componentWrapper = new DOM("ComponentWrapper");
 							componentWrapper.appendChild(component);
 
 							componentWrapper.firstElementChild.outerHTML = componentWrapper.firstElementChild.outerHTML.replaces([
