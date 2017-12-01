@@ -179,7 +179,7 @@ window.addEventListener("DOMContentLoaded", () => {
 					
 					data: [
 						{
-							uid: base.user.uid,
+							uid: "!SYSTEM",
 							content: new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
 							createdAt: now
 						}

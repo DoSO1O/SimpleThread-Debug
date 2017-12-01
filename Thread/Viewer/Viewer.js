@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		
 		if (new DOM("#Thread").children.length < resForIncrease.length) {
 			for (let i = new DOM("#Thread").children.length; i < resForIncrease.length; i++) {
-				let post = new Component.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString(), base.user.uid == resForIncrease[i].uid);
+				let post = new Component.Thread.Post(resForIncrease[i].pid, resForIncrease[i].uid, "", resForIncrease[i].content, new Date(resForIncrease[i].createdAt).toLocaleString(), base.user.uid == resForIncrease[i].uid && i !== 0);
 					post.querySelector('A[Data-Component="Thread_Post_Header_ActorPhoto"]').addEventListener("click", () => {
 						doc.querySelector("#Dialogs_Profile_InfoViewer_UID").value = post.uid;
 						doc.querySelector("#Dialogs_Profile_InfoViewer").showModal();
