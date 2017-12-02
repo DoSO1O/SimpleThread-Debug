@@ -102,8 +102,8 @@ class Component {
 
 
 
-				constructor (tid = "", title = "", isSecured = false) {
-					return new Component(!isSecured ? Thread.UUIDS.ROOT : Thread.UUIDS.SECURED, tid, title);
+				constructor (tid = "", title = "", overview = "", isSecured = false) {
+					return new Component(!isSecured ? Thread.UUIDS.ROOT : Thread.UUIDS.SECURED, tid, title, overview);
 				}
 			}
 		}
