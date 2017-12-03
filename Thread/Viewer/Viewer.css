@@ -38,6 +38,8 @@ Span[Data-Component="Thread_Post_Header_CreatedAt"] {
 }
 
 Div[Data-Component="Thread_Post_Content"] {
+	Max-Width: 100%;
+	
 	White-Space: Pre-Wrap;
 }
 
