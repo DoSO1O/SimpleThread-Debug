@@ -86,16 +86,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-	new DOM("@#Dialogs_Thread_InfoInputer *[Required]").forEach((input) => {
+	new DOM("#Dialogs_Thread_DeleteConfirmer_Btns_Yes").addEventListener("click", () => {
+		base.Database.delete(`threads/${new DOM("#Dialogs_Thread_DeleteConfirmer_TID").value}/`);
+		
+		parent.document.querySelector("IFrame.mdl-layout__content").contentWindow.postMessage({ code: "Code-Refresh" }, "*");
+	});
+
+
+
+	new DOM("@#Dialogs_Thread_InfoInputter *[Required]").forEach((input) => {
 		input.addEventListener("input", () => {
 			let result = true;
 
 			let list = [
-				new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"),
-				new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")
+				new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input"),
+				new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input")
 			];
 
-			if (new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked) list.push(new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input"));
+			if (new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked) list.push(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input"));
 
 			list.forEach(requiredField => {
 				if (requiredField.value.replace(/\s/g, "").length == 0) {
@@ -105,64 +113,66 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 
 			if (result) {
-				new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
+				new DOM("#Dialogs_Thread_InfoInputter").querySelectorAll('Button[Data-Action="Dialog_Submit"]').forEach(btn => {
+					btn.classList.remove("mdl-button--disabled");
+				});
 			} else {
-				new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
+				new DOM("#Dialogs_Thread_InfoInputter").querySelectorAll('Button[Data-Action="Dialog_Submit"]').forEach(btn => {
+					btn.classList.add("mdl-button--disabled");
+				});
 			}
 		});
 	});
 
-	new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").addEventListener("change", (event) => {
+	new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").addEventListener("change", (event) => {
 		let result = true;
 
 		switch (event.target.checked) {
 			case true:
-				new DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.remove("mdl-switch__child-hide");
+				new DOM("#Dialogs_Thread_InfoInputter_Content_Password").classList.remove("mdl-switch__child-hide");
 
-				[new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input")].forEach(requiredField => {
+				[new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input"), new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input")].forEach(requiredField => {
 					if (requiredField.value.replace(/\s/g, "").length == 0) {
 						result = false;
 						return;
 					}
 				});
-
-				if (result) {
-					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
-				} else {
-					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
-				}
 
 				break;
 
 			case false:
-				new DOM("#Dialogs_Thread_InfoInputer_Content_Password").classList.add("mdl-switch__child-hide");
+				new DOM("#Dialogs_Thread_InfoInputter_Content_Password").classList.add("mdl-switch__child-hide");
 
-				[new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input")].forEach(requiredField => {
+				[new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input"), new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input")].forEach(requiredField => {
 					if (requiredField.value.replace(/\s/g, "").length == 0) {
 						result = false;
 						return;
 					}
 				});
 
-				if (result) {
-					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.remove("mdl-button--disabled");
-				} else {
-					new DOM("#Dialogs_Thread_InfoInputer").querySelector('Button[Data-Action="Dialog_Submit"]').classList.add("mdl-button--disabled");
-				}
-
 				break;
+		}
+
+		if (result) {
+			new DOM("#Dialogs_Thread_InfoInputter").querySelectorAll('Button[Data-Action="Dialog_Submit"]').forEach(btn => {
+				btn.classList.remove("mdl-button--disabled");
+			});
+		} else {
+			new DOM("#Dialogs_Thread_InfoInputter").querySelectorAll('Button[Data-Action="Dialog_Submit"]').forEach(btn => {
+				btn.classList.add("mdl-button--disabled");
+			});
 		}
 	});
 
-	new DOM("#Dialogs_Thread_InfoInputer_Btns_OK").addEventListener("click", (event) => {
+	new DOM("#Dialogs_Thread_InfoInputter_Btns_Create").addEventListener("click", (event) => {
 		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
 			base.Database.transaction("threads", (res) => {
 				let now = new Date().getTime();
 
 				base.Database.set("threads/" + res.length, {
-					title: new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
-					overview: new DOM("#Dialogs_Thread_InfoInputer_Content_Overview-Input").value,
-					detail: new DOM("#Dialogs_Thread_InfoInputer_Content_Detail-Input").value,
+					title: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
+					overview: new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input").value,
+					detail: new DOM("#Dialogs_Thread_InfoInputter_Content_Detail-Input").value,
 
 					jobs: {
 						Owner: (() => {
@@ -180,17 +190,31 @@ window.addEventListener("DOMContentLoaded", () => {
 					data: [
 						{
 							uid: "!SYSTEM_INFO",
-							content: new DOM("#Dialogs_Thread_InfoInputer_Content_Name-Input").value,
+							content: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
 							createdAt: now
 						}
 					],
 
-					password: new DOM("#Dialogs_Thread_InfoInputer_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputer_Content_Password-Input").value) : ""
+					password: new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input").value) : ""
 				});
 				
-				new DOM("#Dialogs_Thread_InfoInputer").close();
+				new DOM("#Dialogs_Thread_InfoInputter").close();
 				parent.document.querySelector("IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + res.length;
 			});
+		}
+	});
+
+	new DOM("#Dialogs_Thread_InfoInputter_Btns_Edit").addEventListener("click", (event) => {
+		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
+			base.Database.update(`threads/${new DOM("#Dialogs_Thread_InfoInputter_TID").value}/`, {
+				title: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
+				overview: new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input").value,
+				detail: new DOM("#Dialogs_Thread_InfoInputter_Content_Detail-Input").value,
+				password: new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input").value) : ""
+			});
+
+			new DOM("#Dialogs_Thread_InfoInputter").close();
+			new DOM("#Dialogs_Thread_EditNotify").showModal();
 		}
 	});
 

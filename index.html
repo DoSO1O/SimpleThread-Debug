@@ -174,40 +174,80 @@
 			</Div>
 
 			<Div ID = "Dialogs_Thread">
-				<Dialog ID = "Dialogs_Thread_InfoInputer" Class = "mdl-dialog">
-					<Div ID = "Dialogs_Thread_InfoInputer_Content" Class = "mdl-dialog__content">
-						<Div ID = "Dialogs_Thread_InfoInputer_Content_Name" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Name-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Name-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Name-Input" Data-Locales = "dialog.thread.infoInputer.name">スレッド名...*</Label>
+				<Dialog ID = "Dialogs_Thread_EditNotify" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_EditNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.thread.editNotify">
+						スレッド情報が編集されました。
+					</Div>
+
+					<Div ID = "Dialogs_Thread_EditNotify_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_EditNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
+					</Div>
+				</Dialog>
+
+				<Dialog ID = "Dialogs_Thread_DeleteNotify" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_DeleteNotify_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.thread.deleteNotify">
+						スレッドが削除されました。
+					</Div>
+
+					<Div ID = "Dialogs_Thread_DeleteNotify_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_DeleteNotify_Btns_OK" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_close">閉じる</Button>
+					</Div>
+				</Dialog>
+
+
+
+				<Dialog ID = "Dialogs_Thread_DeleteConfirmer" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_DeleteConfirmer_Content" Class = "mdl-dialog__content" Data-Locales = "dialog.thread.deleteConfirmer">
+						本当にこのスレッドを削除してもよろしいですか？
+					</Div>
+
+					<Div ID = "Dialogs_Thread_DeleteConfirmer_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_DeleteConfirmer_Btns_Yes" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_yes">はい</Button>
+						<Button ID = "Dialogs_Thread_DeleteConfirmer_Btns_No" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_no">いいえ</Button>
+					</Div>
+
+					<Input ID = "Dialogs_Thread_DeleteConfirmer_TID" Type = "Hidden" Value = "" />
+				</Dialog>
+
+
+
+				<Dialog ID = "Dialogs_Thread_InfoInputter" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_InfoInputter_Content" Class = "mdl-dialog__content">
+						<Div ID = "Dialogs_Thread_InfoInputter_Content_Name" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<Input ID = "Dialogs_Thread_InfoInputter_Content_Name-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputter_Content_Name-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputter_Content_Name-Input" Data-Locales = "dialog.thread.infoInputter.name">スレッド名...*</Label>
 						</Div>
 
-						<Div ID = "Dialogs_Thread_InfoInputer_Content_Overview" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Overview-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Overview-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Overview-Input" Data-Locales = "dialog.thread.infoInputer.overview">概要...*</Label>
+						<Div ID = "Dialogs_Thread_InfoInputter_Content_Overview" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<Input ID = "Dialogs_Thread_InfoInputter_Content_Overview-Input" Class = "mdl-textfield__input" Type = "Text" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputter_Content_Overview-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputter_Content_Overview-Input" Data-Locales = "dialog.thread.infoInputter.overview">概要...*</Label>
 						</Div>
 
-						<Div ID = "Dialogs_Thread_InfoInputer_Content_Detail" Class = "mdl-textfield mdl-js-textfield">
-							<Textarea ID = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
-							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Detail-Input" Data-Locales = "dialog.thread.infoInputer.detail">詳細...</Label>
+						<Div ID = "Dialogs_Thread_InfoInputter_Content_Detail" Class = "mdl-textfield mdl-js-textfield">
+							<Textarea ID = "Dialogs_Thread_InfoInputter_Content_Detail-Input" Class = "mdl-textfield__input" Rows = "10" MaxLength = "500"></Textarea>
+							<Label Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputter_Content_Detail-Input" Data-Locales = "dialog.thread.infoInputter.detail">詳細...</Label>
 						</Div>
 
 
 						
-						<Label ID = "Dialogs_Thread_InfoInputer_Content_Secured" Class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" For = "Dialogs_Thread_InfoInputer_Content_Secured-Input">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Secured-Input" Class = "mdl-switch__input" Type = "Checkbox" />
-							<Span Class = "mdl-switch__label" Data-Locales = "dialog.thread.infoInputer.secured">保護</Span>
+						<Label ID = "Dialogs_Thread_InfoInputter_Content_Secured" Class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" For = "Dialogs_Thread_InfoInputter_Content_Secured-Input">
+							<Input ID = "Dialogs_Thread_InfoInputter_Content_Secured-Input" Class = "mdl-switch__input" Type = "Checkbox" />
+							<Span Class = "mdl-switch__label" Data-Locales = "dialog.thread.infoInputter.secured">保護</Span>
 						</Label>
 
-						<Div ID = "Dialogs_Thread_InfoInputer_Content_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-switch__child-hide">
-							<Input ID = "Dialogs_Thread_InfoInputer_Content_Password-Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
-							<Label ID = "Dialogs_Thread_InfoInputer_Content_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputer_Content_Secured_Password-Input" Data-Locales = "dialog.thread.infoInputer.password">パスワード...</Label>
+						<Div ID = "Dialogs_Thread_InfoInputter_Content_Password" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-switch__child-hide">
+							<Input ID = "Dialogs_Thread_InfoInputter_Content_Password-Input" Class = "mdl-textfield__input" Type = "Password" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_InfoInputter_Content_Password-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_InfoInputter_Content_Secured_Password-Input" Data-Locales = "dialog.thread.infoInputter.password">パスワード...</Label>
 						</Div>
 					</Div>
 
-					<Div ID = "Dialogs_Thread_InfoInputer_Btns" Class = "mdl-dialog__actions">
-						<Button ID = "Dialogs_Thread_InfoInputer_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.infoInputer.submit">作成</Button>
-						<Button ID = "Dialogs_Thread_InfoInputer_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
+					<Div ID = "Dialogs_Thread_InfoInputter_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_InfoInputter_Btns_Create" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.infoInputter.create">作成</Button>
+						<Button ID = "Dialogs_Thread_InfoInputter_Btns_Edit" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.infoInputter.edit">編集</Button>
+						<Button ID = "Dialogs_Thread_InfoInputter_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
 					</Div>
+
+					<Input ID = "Dialogs_Thread_InfoInputter_TID" Type = "Hidden" Value = "" />
 				</Dialog>
 
 				<Dialog ID = "Dialogs_Thread_PasswordConfirmer" Class = "mdl-dialog">

@@ -22,6 +22,24 @@
 		</Span>
 	</A>
 
+	<Div Data-Component = "Threadlist_Thread-Admin" Class = "mdl-list__item mdl-list__item--two-line">
+		<A Class = "mdl-list__item-primary-content" Href = "Viewer/?tid=${0}">
+			<I Class = "mdl-list__item-avatar material-icons">person</I>
+			<Span>${1}</Span>
+			<Span Class = "mdl-list__item-sub-title">${2}</Span>
+		</A>
+
+		<Span Data-Component = "Threadlist_Thread-Admin_Menu" Class = "mdl-list__item-secondary-action">
+			<Button Data-Component = "Threadlist_Thread-Admin_Menu_MenuItem-Edit" Class = "mdl-button mdl-js-button mdl-button--icon">
+				<I Class = "material-icons">edit</I>
+			</Button>
+
+			<Button Data-Component = "Threadlist_Thread-Admin_Menu_MenuItem-Delete" Class = "mdl-button mdl-js-button mdl-button--icon">
+				<I Class = "material-icons">delete</I>
+			</Button>
+		</Span>
+	</Div>
+
 	<A Data-Component = "Threadlist_Thread-Secured" Class = "mdl-list__item mdl-list__item--two-line" Href = "Viewer/?tid=${0}">
 		<Span Class = "mdl-list__item-primary-content">
 			<I Class = "mdl-list__item-avatar material-icons">person</I>

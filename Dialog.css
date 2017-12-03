@@ -54,6 +54,12 @@ Img[Data-Component="Dialogs_Profile_InfoViewer_Content_Info_Links_Link_Icon"] {
 
 
 
+#Dialogs_Thread_InfoInputter_Btns > Button[Disabled] {
+	Display: None;
+}
+
+
+
 #Dialogs_Thread_InfoViewer_Content_Overview {
 	Padding: 1em 0 4em 0;
 }
