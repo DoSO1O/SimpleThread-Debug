@@ -33,7 +33,7 @@ Root
 > users
 	> !SYSTEM: ""
 
-	> !INFO
+	> !SYSTEM_INFO
 		> gplusName: ""
 		> gplusPhoto: ""
 		> userName: ""
