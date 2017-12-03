@@ -88,8 +88,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	new DOM("#Dialogs_Thread_DeleteConfirmer_Btns_Yes").addEventListener("click", () => {
 		base.Database.delete(`threads/${new DOM("#Dialogs_Thread_DeleteConfirmer_TID").value}/`);
-		
 		parent.document.querySelector("IFrame.mdl-layout__content").contentWindow.postMessage({ code: "Code-Refresh" }, "*");
+		
+		new DOM("#Dialogs_Thread_EditNotify").showModal();
 	});
 
 
