@@ -28,7 +28,13 @@
 	"dialog.thread.passwordConfirmer.submit": "確認",
 	"dialog.thread.infoViewer.detail": "詳細...",
 	"dialog.thread.poster.text": "最近の出来事を共有してみましょう",
+	"dialog.thread.poster.menu.embedLink": "リンク埋め込み...",
+	"dialog.thread.poster.menu.embedImage": "画像埋め込み...",
+	"dialog.thread.poster.menu.embedFile": "ファイル埋め込み...",
 	"dialog.thread.poster.submit": "投稿",
+	"dialog.thread.poster.linkEmbedder": "URL...*",
+	"dialog.thread.poster.linkEmbedder-error": "無効なURL形式",
+	"dialog.thread.poster.linkEmbedder.add": "追加",
 
 	"main.top": "Top",
 	"main.thread": "Thread",

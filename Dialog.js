@@ -259,6 +259,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	
 
+	new DOM("#Dialogs_Thread_Poster_Menu_MenuItem-EmbedLink").addEventListener("click", () => {
+		new DOM("#Dialogs_Thread_Poster_LinkEmbedder").showModal();
+	});
+
 	new DOM("#Dialogs_Thread_Poster_Content_Text-Input").addEventListener("keydown", (event) => {
 		let inputter = event.target;
 

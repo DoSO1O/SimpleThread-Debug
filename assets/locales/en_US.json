@@ -28,7 +28,13 @@
 	"dialog.thread.passwordConfirmer.submit": "Confirm",
 	"dialog.thread.infoViewer.detail": "Detail...",
 	"dialog.thread.poster.text": "Post your feelings freely",
+	"dialog.thread.poster.menu.embedLink": "Embed links...",
+	"dialog.thread.poster.menu.embedImage": "Embed images...",
+	"dialog.thread.poster.menu.embedFile": "Embed files...",
 	"dialog.thread.poster.submit": "Post",
+	"dialog.thread.poster.linkEmbedder": "URL...*",
+	"dialog.thread.poster.linkEmbedder-error": "Invalid URL",
+	"dialog.thread.poster.linkEmbedder.add": "Add",
 
 	"main.top": "Top",
 	"main.thread": "Thread",
