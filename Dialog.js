@@ -47,12 +47,10 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	new DOM("#Dialogs_Profile_DeleteConfirmer_Btns_Yes").addEventListener("click", (event) => {
-		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			if (new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
-				base.delete();
-			} else {
-				new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email").classList.add("is-invalid");
-			}
+		if (new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email-Input").value == base.user.email) {
+			base.delete();
+		} else {
+			new DOM("#Dialogs_Profile_DeleteConfirmer_Content_Email").classList.add("is-invalid");
 		}
 	});
 
@@ -166,72 +164,66 @@ window.addEventListener("DOMContentLoaded", () => {
 	});
 
 	new DOM("#Dialogs_Thread_InfoInputter_Btns_Create").addEventListener("click", (event) => {
-		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			base.Database.transaction("threads", (res) => {
-				let now = new Date().getTime();
+		base.Database.transaction("threads", (res) => {
+			let now = new Date().getTime();
 
-				base.Database.set("threads/" + res.length, {
-					title: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
-					overview: new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input").value,
-					detail: new DOM("#Dialogs_Thread_InfoInputter_Content_Detail-Input").value,
-
-					jobs: {
-						Owner: (() => {
-							let owner = {}; owner[base.user.uid] = "";
-							return owner;
-						})(),
-
-						Admin: {
-
-						}
-					},
-
-					createdAt: now,
-					
-					data: [
-						{
-							uid: "!SYSTEM_INFO",
-							content: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
-							createdAt: now
-						}
-					],
-
-					password: new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input").value) : ""
-				});
-				
-				new DOM("#Dialogs_Thread_InfoInputter").close();
-				parent.document.querySelector("IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + res.length;
-			});
-		}
-	});
-
-	new DOM("#Dialogs_Thread_InfoInputter_Btns_Edit").addEventListener("click", (event) => {
-		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			base.Database.update(`threads/${new DOM("#Dialogs_Thread_InfoInputter_TID").value}/`, {
+			base.Database.set("threads/" + res.length, {
 				title: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
 				overview: new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input").value,
 				detail: new DOM("#Dialogs_Thread_InfoInputter_Content_Detail-Input").value,
+
+				jobs: {
+					Owner: (() => {
+						let owner = {}; owner[base.user.uid] = "";
+						return owner;
+					})(),
+
+					Admin: {
+
+					}
+				},
+
+				createdAt: now,
+				
+				data: [
+					{
+						uid: "!SYSTEM_INFO",
+						content: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
+						createdAt: now
+					}
+				],
+
 				password: new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input").value) : ""
 			});
-
+			
 			new DOM("#Dialogs_Thread_InfoInputter").close();
-			new DOM("#Dialogs_Thread_EditNotify").showModal();
-		}
+			parent.document.querySelector("IFrame.mdl-layout__content").src = "Thread/Viewer/?tid=" + res.length;
+		});
+	});
+
+	new DOM("#Dialogs_Thread_InfoInputter_Btns_Edit").addEventListener("click", (event) => {
+		base.Database.update(`threads/${new DOM("#Dialogs_Thread_InfoInputter_TID").value}/`, {
+			title: new DOM("#Dialogs_Thread_InfoInputter_Content_Name-Input").value,
+			overview: new DOM("#Dialogs_Thread_InfoInputter_Content_Overview-Input").value,
+			detail: new DOM("#Dialogs_Thread_InfoInputter_Content_Detail-Input").value,
+			password: new DOM("#Dialogs_Thread_InfoInputter_Content_Secured-Input").checked ? Encrypter.encrypt(new DOM("#Dialogs_Thread_InfoInputter_Content_Password-Input").value) : ""
+		});
+
+		new DOM("#Dialogs_Thread_InfoInputter").close();
+		new DOM("#Dialogs_Thread_EditNotify").showModal();
 	});
 
 
 
 	new DOM("#Dialogs_Thread_PasswordConfirmer_Btns_OK").addEventListener("click", (event) => {
-		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			if (Encrypter.encrypt(new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value) == new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
-				sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPassword", new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value);
-				new DOM("$IFrame.mdl-layout__content").src = new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
+		if (Encrypter.encrypt(new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value) == new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value) {
+			sessionStorage.setItem("com.GenbuProject.SimpleThread.currentPassword", new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password-Input").value);
+			new DOM("$IFrame.mdl-layout__content").src = new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value;
 
-				new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value = "",
-				new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value = "";
-			} else {
-				new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
-			}
+			new DOM("#Dialogs_Thread_PasswordConfirmer_Link").value = "",
+			new DOM("#Dialogs_Thread_PasswordConfirmer_Password").value = "";
+		} else {
+			new DOM("#Dialogs_Thread_PasswordConfirmer_Content_Password").classList.add("is-invalid");
 		}
 	});
 
@@ -267,24 +259,41 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	
 
-	new DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
-		if (!event.currentTarget.classList.contains("mdl-button--disabled")) {
-			base.Database.transaction("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
-				base.Database.set("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
-					uid: base.user.uid,
-					content: new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value,
-					createdAt: new Date().getTime()
-				});
+	new DOM("#Dialogs_Thread_Poster_Content_Text-Input").addEventListener("keydown", (event) => {
+		let inputter = event.target;
 
-				new DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
-				new DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
-				new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
-				
-				new DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
-				
-				new DOM("#Dialogs_Thread_Poster").close();
-			});
+		let selectionStart = inputter.selectionStart,
+			selectionEnd = inputter.selectionEnd;
+
+		switch (event.keyCode) {
+			case 9:
+				event.preventDefault();
+
+				inputter.value = `${inputter.value.slice(0, selectionStart)}\t${inputter.value.slice(selectionEnd)}`;
+				inputter.setSelectionRange(selectionStart + 1, selectionStart + 1);
+
+				new DOM("#Dialogs_Thread_Poster_Content_Text").classList.add("is-dirty");
+
+				break;
 		}
+	});
+
+	new DOM("#Dialogs_Thread_Poster_Btns_OK").addEventListener("click", (event) => {
+		base.Database.transaction("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data", (res) => {
+			base.Database.set("threads/" + new DOM("#Dialogs_Thread_Poster_TID").value + "/data/" + res.length, {
+				uid: base.user.uid,
+				content: new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value,
+				createdAt: new Date().getTime()
+			});
+
+			new DOM("#Dialogs_Thread_Poster_Btns_OK").classList.add("mdl-button--disabled"),
+			new DOM("#Dialogs_Thread_Poster_Content_Text").classList.remove("is-dirty"),
+			new DOM("#Dialogs_Thread_Poster_Content_Text-Input").value = "";
+			
+			new DOM("#Page").contentDocument.querySelector("#FlowPanel_Btns_CreatePost").removeAttribute("Disabled");
+			
+			new DOM("#Dialogs_Thread_Poster").close();
+		});
 	});
 
 	new DOM("#Dialogs_Thread_Poster_Btns_Cancel").addEventListener("click", () => {

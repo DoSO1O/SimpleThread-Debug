@@ -80,6 +80,10 @@ window.addEventListener("DOMContentLoaded", () => {
 		new DOM("#FlowPanel_Btns_CreatePost").setAttribute("Disabled", "");
 	});
 
+	new DOM("#FlowPanel_Btns_Scroller").addEventListener("click", () => {
+
+	});
+
 	new DOM("#FlowPanel_Btns_ShowThreadInfo").addEventListener("click", () => {
 		doc.querySelector("#Dialogs_Thread_InfoViewer").showModal();
 	});
