@@ -26,6 +26,11 @@ class DBLoader extends FirebasePlus {
 				});
 			});
 
+			this.accessToken = "",
+			this.idToken = "",
+			this.signInType = "",
+			this.signInScope = [];
+
 			this.Database.delete("users/" + this.user.uid);
 			this.user.delete();
 			
