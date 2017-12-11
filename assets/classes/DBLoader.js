@@ -8,7 +8,7 @@ class DBLoader extends FirebasePlus {
 
 
 	delete () {
-		this.reauth([""]).then(() => {
+		this.reauth().then(() => {
 			this.Database.get(this.Database.ONCE, "threads/", res => {
 				res.forEach((thread, threadIndex) => {
 					if (thread.data) {

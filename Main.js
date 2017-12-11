@@ -1,4 +1,8 @@
 window.base = new DBLoader("assets/firebase.json", (user) => {
+	window.gapi.load("picker");
+
+
+	
 	if (user) {
 		new DOM("#Header_SignInOut").dataset.locales = "main.signOut";
 
@@ -99,7 +103,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	new DOM("#Header_SignInOut").addEventListener("click", () => {
 		switch (new DOM("#Header_SignInOut").dataset.locales) {
 			case "main.signIn":
-				base.signInWithRedirect(base.SIGNINTYPE.GOOGLE, ["https://www.googleapis.com/auth/plus.login"]);
+				base.signInWithRedirect(base.SIGNINTYPE.GOOGLE, base.option.scope);
 				break;
 				
 			case "main.signOut":

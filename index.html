@@ -332,24 +332,22 @@
 					</Div>
 
 					<Input ID = "Dialogs_Thread_Poster_TID" Type = "Hidden" Value = "" />
+				</Dialog>
 
+				<Dialog ID = "Dialogs_Thread_Poster_LinkEmbedder" Class = "mdl-dialog">
+					<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Content" Class = "mdl-dialog__content">
+						<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<Input ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Input" Class = "mdl-textfield__input" Type = "URL" Value = "" Required = "Required" />
+							<Label ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Input" Data-Locales = "dialog.thread.poster.linkEmbedder">URL...*</Label>
 
-
-					<Dialog ID = "Dialogs_Thread_Poster_LinkEmbedder" Class = "mdl-dialog">
-						<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Content" Class = "mdl-dialog__content">
-							<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL" Class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<Input ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Input" Class = "mdl-textfield__input" Type = "URL" Value = "" Required = "Required" />
-								<Label ID = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Label" Class = "mdl-textfield__label" For = "Dialogs_Thread_Poster_LinkEmbedder_Content_URL-Input" Data-Locales = "dialog.thread.poster.linkEmbedder">URL...*</Label>
-	
-								<Span Class = "mdl-textfield__error" Data-Locales = "dialog.thread.poster.linkEmbedder-error">無効なURL形式</Span>
-							</Div>
+							<Span Class = "mdl-textfield__error" Data-Locales = "dialog.thread.poster.linkEmbedder-error">無効なURL形式</Span>
 						</Div>
-	
-						<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns" Class = "mdl-dialog__actions">
-							<Button ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.poster.linkEmbedder.add">追加</Button>
-							<Button ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
-						</Div>
-					</Dialog>
+					</Div>
+
+					<Div ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns" Class = "mdl-dialog__actions">
+						<Button ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns_OK" Class = "mdl-button mdl-js-button mdl-button--disabled mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Submit" Data-Locales = "dialog.thread.poster.linkEmbedder.add">追加</Button>
+						<Button ID = "Dialogs_Thread_Poster_LinkEmbedder_Btns_Cancel" Class = "mdl-button mdl-js-button mdl-js-ripple-effect" Type = "Button" Data-Action = "Dialog_Close" Data-Locales = "common.dialog_cancel">キャンセル</Button>
+					</Div>
 				</Dialog>
 			</Div>
 		</Div>
