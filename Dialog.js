@@ -263,6 +263,23 @@ window.addEventListener("DOMContentLoaded", () => {
 		new DOM("#Dialogs_Thread_Poster_LinkEmbedder").showModal();
 	});
 
+	new DOM("#Dialogs_Thread_Poster_Menu_MenuItem-EmbedImage").addEventListener("click", () => {
+		new DOM("#Dialogs_Thread_Poster").close();
+
+		let picker = new Picker.PhotoPicker(data => {
+			console.log(data);
+			
+			switch (data[google.picker.Response.ACTION]) {
+				case google.picker.Action.CANCEL:
+				case google.picker.Action.PICKED:
+					new DOM("#Dialogs_Thread_Poster").showModal();
+					break;
+			}
+		});
+
+		picker.show();
+	});
+
 	new DOM("#Dialogs_Thread_Poster_Content_Text-Input").addEventListener("keydown", (event) => {
 		let inputter = event.target;
 
