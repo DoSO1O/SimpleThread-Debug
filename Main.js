@@ -1,6 +1,26 @@
 window.base = new DBLoader("assets/firebase.json", (user) => {
 	window.gapi.load("picker", () => {
 		window.Picker = class Picker extends google.picker.PickerBuilder {
+			static get PhotoPicker () {
+				return class PhotoPicker extends window.Picker {
+					constructor (onSelect = (data) => {}) {
+						super(onSelect);
+						super.addView(google.picker.ViewId.PHOTOS);
+					}
+				}
+			}
+
+			static get FilePicker () {
+				return class FilePicker extends window.Picker {
+					constructor (onSelect = (data) => {}) {
+						super(onSelect);
+						super.addView(google.picker.ViewId.DOCS);
+					}
+				}
+			}
+
+
+
 			constructor (onSelect = (data) => {}) {
 				super();
 
@@ -16,13 +36,6 @@ window.base = new DBLoader("assets/firebase.json", (user) => {
 
 			dismiss () {
 				this.picker.setVisible(false);
-			}
-		}
-
-		window.Picker.PhotoPicker = class PhotoPicker extends window.Picker {
-			constructor (onSelect = (data) => {}) {
-				super(onSelect);
-				super.addView(google.picker.ViewId.PHOTOS);
 			}
 		}
 	});

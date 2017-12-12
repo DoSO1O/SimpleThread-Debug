@@ -268,6 +268,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		let picker = new Picker.PhotoPicker(data => {
 			console.log(data);
+
+			switch (data[google.picker.Response.ACTION]) {
+				case google.picker.Action.CANCEL:
+				case google.picker.Action.PICKED:
+					new DOM("#Dialogs_Thread_Poster").showModal();
+					break;
+			}
+		});
+
+		picker.show();
+	});
+
+	new DOM("#Dialogs_Thread_Poster_Menu_MenuItem-EmbedFile").addEventListener("click", () => {
+		new DOM("#Dialogs_Thread_Poster").close();
+
+		let picker = new Picker.FilePicker(data => {
+			console.log(data);
 			
 			switch (data[google.picker.Response.ACTION]) {
 				case google.picker.Action.CANCEL:
